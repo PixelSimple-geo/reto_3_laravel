@@ -11,19 +11,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('usuario');
-            $table->string('pass');
-            $table->timestamps();
+        Schema::create('authorities_granted', function (Blueprint $table) {
+            $table->foreignId('authorities_id')->constrained();
+            $table->foreignId('users_id')->constrained();
+            $table->primary(['authorities_id', 'users_id']);
         });
     }
-
+    
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('authorities_granted');
     }
 };
