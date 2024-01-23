@@ -36,16 +36,12 @@ class PedidosController extends Controller
      */
     public function store(Request $request)
     {
-        // Validar los datos del formulario
         $request->validate([
             'clientes_id' => 'required|exists:clientes,id',
         ]);
 
-            $pedido = Pedido::create([
-            'clientes_id' => $request->input('clientes_id'),
-        ]);
+        Pedido::create($request->all());
 
-        // Redireccionar a la vista de detalles del pedido
         return redirect()->route('pedidos.show', $pedido->id)->with('success', 'Pedido creado exitosamente');
     }
 

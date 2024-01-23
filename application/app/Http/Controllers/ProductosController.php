@@ -40,11 +40,8 @@ class ProductosController extends Controller
             'categoria_id' => 'required|exists:categorias,id',
         ]);
 
-        $producto = Producto::create([
-            'categoria_id' => $request->input('categoria_id'),
-            'nombre' => $request->input('nombre'),
-            'descripcion' => $request->input('descripcion'),
-        ]);
+        Producto::create($request->all());
+
 
         return redirect()->route('productos.show', $producto->id)->with('success', 'Producto creado exitosamente');
     }

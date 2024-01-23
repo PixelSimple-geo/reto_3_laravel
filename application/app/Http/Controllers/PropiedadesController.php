@@ -43,12 +43,7 @@ class PropiedadesController extends Controller
             'precio' => 'required|numeric',
         ]);
 
-        Propiedad::create([
-            'producto_id' => $request->input('producto_id'),
-            'formato' => $request->input('formato'),
-            'unidades' => $request->input('unidades'),
-            'precio' => $request->input('precio'),
-        ]);
+        Propiedad::create($request->all());
 
         return redirect()->route('propiedades.index')->with('success', 'Propiedad created successfully');
     }
