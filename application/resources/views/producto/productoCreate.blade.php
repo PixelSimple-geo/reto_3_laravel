@@ -1,6 +1,7 @@
 @extends("layout.layout")
 @section("head")
     @include("parciales.head")
+    <title>Crear Producto</title>
 @endsection
 @section("main")
 <main>

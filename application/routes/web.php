@@ -14,10 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Inicio
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('index');
+})->name('index');
 
+//Autenticacion
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -29,3 +31,8 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+    //Productos
+Route::get('/productoCreate', function () {
+    return view('producto/productoCreate');
+})->middleware('auth');

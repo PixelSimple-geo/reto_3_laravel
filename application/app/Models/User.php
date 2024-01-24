@@ -42,4 +42,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function authorities()
+    {
+        return $this->belongsToMany(Authority::class, 'authorities_granted', 'users_id', 'authorities_id');
+    }
 }
