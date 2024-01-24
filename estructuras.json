@@ -1,0 +1,55 @@
+[
+  {
+    "id": 1,
+    "cliente_id": 1,
+    "fecha": "2024-1-24",
+    "direccion": "arriaga",
+    "estado": "completado",
+    "productos": [
+      {
+        "id": 1,
+        "categoria": { "id": 1, "nombre": "Bebidas" },
+        "nombre": "Cerveza Killer",
+        "descripcion": "Producto estrella de nuestra compañía",
+        "foto": "n/s"
+      },
+      {
+        "id": 2,
+        "categoria": { "id": 1, "nombre": "Bebidas" },
+        "nombre": "Cerveza Smite",
+        "descripcion": "Cerveza inferior a la 'Cerveza Killer'",
+        "foto": "n/s"
+      },
+      {
+        "id": 3,
+        "categoria": { "id": 2, "nombre": "Carne" },
+        "nombre": "Lomo adobado",
+        "descripcion": "Lomo adobado completamente orgánico, sin gluten.",
+        "foto": "n/s"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "cliente_id": 2,
+    "fecha": "2024-1-25",
+    "direccion": "example",
+    "estado": "pendiente",
+    "productos": [
+      {
+        "id": 4,
+        "categoria": { "id": 3, "nombre": "Postres" },
+        "nombre": "Pastel de Chocolate",
+        "descripcion": "Delicioso pastel de chocolate con cobertura.",
+        "foto": "n/s"
+      },
+      {
+        "id": 5,
+        "categoria": { "id": 4, "nombre": "Vegetariano" },
+        "nombre": "Ensalada Fresca",
+        "descripcion": "Ensalada con ingredientes frescos y nutritivos.",
+        "foto": "n/s"
+      }
+    ]
+  }
+]
