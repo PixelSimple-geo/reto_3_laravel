@@ -27,6 +27,7 @@
       <excludeFolder url="file://$MODULE_DIR$/application/vendor/guzzlehttp/psr7" />
       <excludeFolder url="file://$MODULE_DIR$/application/vendor/guzzlehttp/uri-template" />
       <excludeFolder url="file://$MODULE_DIR$/application/vendor/hamcrest/hamcrest-php" />
+      <excludeFolder url="file://$MODULE_DIR$/application/vendor/laravel/breeze" />
       <excludeFolder url="file://$MODULE_DIR$/application/vendor/laravel/framework" />
       <excludeFolder url="file://$MODULE_DIR$/application/vendor/laravel/pint" />
       <excludeFolder url="file://$MODULE_DIR$/application/vendor/laravel/prompts" />
