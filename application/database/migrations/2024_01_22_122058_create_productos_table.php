@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('categoria_id')->constrained();
             $table->string('nombre');
             $table->text('descripcion');
+            $table->string('foto');
             $table->timestamps();
         });
     }
