@@ -15,32 +15,51 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Controllers
-use App\Http\Controllers\PedidosController;
+use App\Http\Controllers\TableroController;
+use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\ProductoController;
 
-// Redireccionar a la página de inicio de sesión si el usuario no ha iniciado sesión
+
+//Inicio
+Route::get('/', function () {
+    return view('auth.login');
+})->name('index');
+
+//Autenticacion
+Route::get('/dashboard', [TableroController::class, 'showTablero'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
 Route::middleware('auth')->group(function () {
-    //Inicio
-    Route::get('/', function () {
-        return view('dashboard');
-    })->name('index');
-    
-
-    //Dashboard
-    Route::get('/{role}', [ProfileController::class, 'dashboard'])->name('dashboard');
-
-    //Perfil
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
+    
     //Productos
+    Route::get('/productos', [ProductoController::class, 'index'])->name('productos.productoIndex');
     Route::get('/productoCreate', function () {
         return view('producto/productoCreate');
-    });
+    })->name('productoCreate');
 
+
+    
     //Pedidos
-    Route::get('/pedidos/create', [PedidoController::class, 'create'])->name('pedidos.create');
+    Route::get('/pedidos/create', [PedidoController::class, 'create'])->name('pedidos.pedidoCreate');
     Route::post('/pedidos', [PedidoController::class, 'store'])->name('pedidos.store');
+    Route::get('/pedidos/{pedido}/edit', [PedidoController::class, 'edit'])->name('pedidos.edit');
+    Route::put('/pedidos/{pedido}', [PedidoController::class, 'update'])->name('pedidos.update');
+    Route::delete('/pedidos/{pedido}', [PedidoController::class, 'destroy'])->name('pedidos.destroy');
+
+    //Clientes
+    Route::get('/clientes', [ClienteController::class, 'index'])->name('clientes.clienteIndex');
+    Route::get('/clientes/{cliente}/edit', [ClienteController::class, 'edit'])->name('clientes.edit');
+    Route::delete('/clientes/{cliente}', [ClienteController::class, 'destroy'])->name('clientes.destroy');
+    Route::put('/clientes/{cliente}', [ClienteController::class, 'update'])->name('clientes.update');
 });
+
+
+
+
 
 require __DIR__.'/auth.php';

@@ -5,17 +5,30 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('index') }}">
+                    <a href="{{ route('dashboard') }}">
                     <img src="{{ asset('home.svg') }}" alt="Descripción de la imagen">
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('index')" :active="request()->routeIs('dashboard')">
-                        {{ __('Tablero  ') }}
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Tablero') }}
                     </x-nav-link>
+
+                    @if (Auth::user()->rol === 'administrativo')
+                        <x-nav-link :href="route('clientes.clienteIndex')" :active="request()->routeIs('clientes.index')">
+                            {{ __('Clientes') }}
+                        </x-nav-link>
+
+                        <x-nav-link :href="route('productos.productoIndex')" :active="request()->routeIs('productos.catalogo')">
+                            {{ __('Catálogo de Productos') }}
+                        </x-nav-link>
+                    @endif
                 </div>
+
+
+                
             </div>
 
             <!-- Settings Dropdown -->
@@ -72,8 +85,8 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('index')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                {{ __('Tablero') }}
             </x-responsive-nav-link>
         </div>
 
@@ -85,8 +98,12 @@
             </div>
 
             <div class="mt-3 space-y-1">
+                <x-dropdown-link :href="route('index')">
+                        {{ __('Inicio') }}
+                </x-dropdown-link>
+
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                    {{ __('Perfil') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
@@ -96,7 +113,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Cerrar Sesion') }}
                     </x-responsive-nav-link>
                 </form>
             </div>

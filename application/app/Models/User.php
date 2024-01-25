@@ -43,8 +43,12 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function authorities()
+    // rol
+    public function hasRole($rol)
     {
-        return $this->belongsToMany(Authority::class, 'authorities_granted', 'users_id', 'authorities_id');
+        return $this->rol === $rol;
     }
+
+
+  
 }
