@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producto;
+use App\Models\Categoria; 
+
 use Illuminate\Http\Request;
+
 
 class ProductoController extends Controller
 {
@@ -31,18 +34,18 @@ class ProductoController extends Controller
         return response()->json($producto, 200);
     }
 
+    public function edit(Producto $producto)
+    {
+        $categorias = Categoria::all();
+        return view('productos.productoEdit', compact('producto', 'categorias'));
+    }
+
     public function update(Request $request, Producto $producto)
     {
-        $request->validate([
-            'idCategoria' => 'required|exists:categorias,id',
-            'nombreProducto' => 'required|string',
-            'descripcionProducto' => 'required|string',
-            'fotoURL' => 'required|string'
-        ]);
-
         $producto->update($request->all());
-        return response()->json($producto, 200);
-    }
+        
+        return redirect()->route('productos.productoIndex')
+                            ->with('success', 'Producto actualizado exitosamente.');    }
 
     public function destroy(Producto $producto)
     {

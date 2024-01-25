@@ -47,11 +47,6 @@
                     </x-slot>
 
                     <x-slot name="content">
-
-                        <x-dropdown-link :href="route('index')">
-                            {{ __('Inicio') }}
-                        </x-dropdown-link>
-
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Perfil') }}
                         </x-dropdown-link>
@@ -88,6 +83,15 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Tablero') }}
             </x-responsive-nav-link>
+            @if (Auth::user()->rol === 'administrativo')
+                        <x-responsive-nav-link :href="route('clientes.clienteIndex')" :active="request()->routeIs('clientes.index')">
+                            {{ __('Clientes') }}
+                        </x-responsive-nav-link>
+
+                        <x-responsive-nav-link :href="route('productos.productoIndex')" :active="request()->routeIs('productos.catalogo')">
+                            {{ __('Catálogo de Productos') }}
+                        </x-responsive-nav-link>
+                    @endif
         </div>
 
         <!-- Responsive Settings Options -->
@@ -98,10 +102,6 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-dropdown-link :href="route('index')">
-                        {{ __('Inicio') }}
-                </x-dropdown-link>
-
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Perfil') }}
                 </x-responsive-nav-link>

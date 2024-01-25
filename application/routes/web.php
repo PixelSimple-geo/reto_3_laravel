@@ -38,10 +38,10 @@ Route::middleware('auth')->group(function () {
     
     //Productos
     Route::get('/productos', [ProductoController::class, 'index'])->name('productos.productoIndex');
-    Route::get('/productoCreate', function () {
-        return view('producto/productoCreate');
-    })->name('productoCreate');
-
+    Route::get('/productos/create', [ProductoController::class, 'create'])->name('productos.productoCreate');
+    Route::get('/productos/{producto}/edit', [ProductoController::class, 'edit'])->name('productos.productoEdit');
+    Route::delete('/productos/{producto}', [ProductoController::class, 'destroy'])->name('productos.destroy');
+    Route::put('/productos/{producto}', [ProductoController::class, 'update'])->name('productos.update');
 
     
     //Pedidos
