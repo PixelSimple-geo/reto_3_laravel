@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('idCategoria')->constrained('categorias');
             $table->string('nombreProducto');
             $table->text('descripcionProducto');
-            $table->string('fotoURL')->nullable();
+            $table->text('fotoURL')->nullable();
             $table->timestamps();
         });
     }

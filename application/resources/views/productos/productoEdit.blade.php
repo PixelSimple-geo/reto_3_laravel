@@ -39,13 +39,14 @@
 
                         <!-- Imagen -->
                         <div class="mb-4">
-                            <label for="imagen" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Imagen:</label>
-                            <input type="url" name="fotoURL" id="imagen" class="form-input mt-1 block w-full" placeholder="Insertar URL de la imagen">
                             @if ($producto->fotoURL)
-                                <a href="{{ $producto->fotoURL }}" target="_blank" class="block mt-2 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-600">Ver imagen</a>
+                                <a href="{{ $producto->fotoURL }}" target="_blank" class="btn btn-primary btn-sm mt-2">Ver imagen</a>
                             @else
                                 <span class="block mt-2 text-gray-500 dark:text-gray-400">No hay imagen disponible</span>
                             @endif
+                            <label for="imagen" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Imagen:</label>
+                            <input type="url" name="fotoURL" id="imagen" class="form-input mt-1 block w-full" placeholder="Insertar URL de la imagen">
+            
                         </div>
 
 
