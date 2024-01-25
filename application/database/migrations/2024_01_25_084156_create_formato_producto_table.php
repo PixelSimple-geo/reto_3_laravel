@@ -9,11 +9,14 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('authorities', function (Blueprint $table) {
+        Schema::create('formato_producto', function (Blueprint $table) {
             $table->id();
-            $table->string('rol');
+            $table->foreignId('idProducto')->constrained('productos');
+            $table->string('formatoEnvase');
+            $table->integer('unidades');
+            $table->decimal('precioUnitario', 8, 2);
             $table->timestamps();
         });
     }
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('authorities');
+        Schema::dropIfExists('formato_producto');
     }
 };

@@ -9,14 +9,14 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('categoria_id')->constrained();
-            $table->string('nombre');
-            $table->text('descripcion');
-            $table->string('foto');
+            $table->foreignId('idCategoria')->constrained('categorias');
+            $table->string('nombreProducto');
+            $table->text('descripcionProducto');
+            $table->string('fotoURL');
             $table->timestamps();
         });
     }

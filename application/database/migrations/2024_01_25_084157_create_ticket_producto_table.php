@@ -9,13 +9,13 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('propiedades_has_pedidos', function (Blueprint $table) {
-            $table->foreignId('propiedades_id')->constrained();
-            $table->foreignId('pedidos_id')->constrained();
+        Schema::create('ticket_producto', function (Blueprint $table) {
+            $table->foreignId('idPedido')->constrained('pedidos');
+            $table->foreignId('idFormatoProducto')->constrained('formato_producto');
             $table->integer('unidades');
-            $table->primary(['propiedades_id', 'pedidos_id']);
+            $table->primary(['idPedido', 'idFormatoProducto']);
         });
     }
 
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('propiedades_has_pedidos');
+        Schema::dropIfExists('ticket_producto');
     }
 };

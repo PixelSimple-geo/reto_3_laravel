@@ -14,25 +14,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Inicio
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+//Controllers
+use App\Http\Controllers\PedidosController;
 
-//Autenticacion
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
+// Redireccionar a la página de inicio de sesión si el usuario no ha iniciado sesión
 Route::middleware('auth')->group(function () {
+    //Inicio
+    Route::get('/', function () {
+        return view('dashboard');
+    })->name('index');
+    
+
+    //Dashboard
+    Route::get('/{role}', [ProfileController::class, 'dashboard'])->name('dashboard');
+
+    //Perfil
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    //Productos
+    Route::get('/productoCreate', function () {
+        return view('producto/productoCreate');
+    });
+
+    //Pedidos
+    Route::get('/pedidos/create', [PedidoController::class, 'create'])->name('pedidos.create');
+    Route::post('/pedidos', [PedidoController::class, 'store'])->name('pedidos.store');
 });
 
 require __DIR__.'/auth.php';
-
-    //Productos
-Route::get('/productoCreate', function () {
-    return view('producto/productoCreate');
-})->middleware('auth');

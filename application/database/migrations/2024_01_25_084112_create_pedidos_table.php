@@ -9,15 +9,15 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('clientes_id')->constrained('clientes');
-            $table->date('fecha');
-            $table->string('direccion');
-            $table->string('estado');
-            $table->string('foto')->nullable();
+            $table->foreignId('idCliente')->constrained('clientes');
+            $table->foreignId('Usuario')->constrained('users');
+            $table->date('fechaPedido');
+            $table->string('direccionEnvio');
+            $table->string('estadoPedido');
             $table->timestamps();
         });
     }
