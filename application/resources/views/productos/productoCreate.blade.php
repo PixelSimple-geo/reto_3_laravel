@@ -1,35 +1,54 @@
-@extends("layout.layout")
-@section("head")
-    @include("parciales.head")
-    <title>Crear Producto</title>
-@endsection
-@section("main")
-<main>
-    <h1>Añadir producto</h1>
-    <form action="http://localhost/" method="POST" enctype="multipart/form-data">
-        <div>
-            <label for="categoria_id">Categoría</label>
-            <select id="categoria_id" name="categoria_id">
-                <option selected disabled>Elige una categoría</option>
-                <option value="1">Bebidas</option>
-            </select>
-        </div>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('Crear Producto') }}
+        </h2>
+    </x-slot>
 
-        <div>
-            <label for="nombre">Nombre</label>
-            <input id="nombre" name="nombre" minlength="2" maxlength="45">
-        </div>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-600">
+                    <!-- Formulario para crear el producto -->
+                    <form method="POST" action="{{ route('productos.store') }}" enctype="multipart/form-data">
+                        @csrf
 
-        <div>
-            <label for="descripcion">Descripción</label>
-            <textarea id="descripcion" name="descripcion"></textarea>
-        </div>
+                        <!-- Categoría -->
+                        <div class="mb-4">
+                            <label for="categoria_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Categoría:</label>
+                            <select name="idCategoria" id="categoria_id" class="form-select mt-1 block w-full">
+                                <option value="" disabled selected>Selecciona una categoría</option>
+                                @foreach($categorias as $categoria)
+                                    <option value="{{ $categoria->id }}">{{ $categoria->nombreCategoria }}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
-        <div>
-            <label for="Imagen"></label>
-            <input type="file">
+                        <!-- Nombre -->
+                        <div class="mb-4">
+                            <label for="nombre" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nombre:</label>
+                            <input type="text" name="nombreProducto" id="nombre" class="form-input mt-1 block w-full" required>
+                        </div>
+
+                        <!-- Descripción -->
+                        <div class="mb-4">
+                            <label for="descripcion" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Descripción:</label>
+                            <textarea name="descripcionProducto" id="descripcion" class="form-textarea mt-1 block w-full" rows="3" required></textarea>
+                        </div>
+
+                        <!-- Imagen -->
+                        <div class="mb-4">
+                            <label for="imagen" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Imagen:</label>
+                            <input type="url" name="fotoURL" id="imagen" class="form-input mt-1 block w-full" placeholder="Insertar URL de la imagen">
+                        </div>
+
+                        <!-- Botón de envío -->
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary text-black">{{ __('Crear Producto') }}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <button>Agregar producto</button>
-    </form>
-</main>
-@endsection
+    </div>
+</x-app-layout>

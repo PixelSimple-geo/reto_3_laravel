@@ -16,17 +16,16 @@ class ProductoController extends Controller
         return view("productos.productoIndex", compact('productos'));
     }
 
+    public function create()
+    {
+        $categorias = Categoria::all();
+        return view('productos.productoCreate', compact('categorias'));
+    }
+
     public function store(Request $request)
     {
-        $request->validate([
-            'idCategoria' => 'required|exists:categorias,id',
-            'nombreProducto' => 'required|string',
-            'descripcionProducto' => 'required|string',
-            'fotoURL' => 'required|string'
-        ]);
-
         $producto = Producto::create($request->all());
-        return response()->json($producto, 201);
+        return redirect()->route('productos.productoIndex')->with('success', 'Producto creado exitosamente.');
     }
 
     public function show(Producto $producto)
@@ -50,7 +49,7 @@ class ProductoController extends Controller
     public function destroy(Producto $producto)
     {
         $producto->delete();
-        return response()->json(null, 204);
+        return redirect()->route('productos.productoIndex')->with('success', 'Producto eliminado exitosamente.');
     }
 }
     

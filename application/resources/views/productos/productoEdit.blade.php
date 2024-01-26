@@ -45,10 +45,9 @@
                                 <span class="block mt-2 text-gray-500 dark:text-gray-400">No hay imagen disponible</span>
                             @endif
                             <label for="imagen" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Imagen:</label>
-                            <input type="url" name="fotoURL" id="imagen" class="form-input mt-1 block w-full" placeholder="Insertar URL de la imagen">
+                            <input type="url" name="fotoURL" id="imagen" class="form-input mt-1 block w-full" placeholder="Insertar URL de la imagen" value="{{ $producto->fotoURL }}">
             
                         </div>
-
 
                         <!-- Botones de acción -->
                         <div class="form-group d-flex justify-content-between">
