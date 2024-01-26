@@ -19,6 +19,7 @@ use App\Http\Controllers\TableroController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\api;
 
 
 //Inicio
@@ -35,7 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
+
     //Productos
     Route::get('/productos', [ProductoController::class, 'index'])->name('productos.productoIndex');
     Route::get('/productos/create', [ProductoController::class, 'create'])->name('productos.productoCreate');
@@ -44,7 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/productos/{producto}', [ProductoController::class, 'destroy'])->name('productos.destroy');
     Route::put('/productos/{producto}', [ProductoController::class, 'update'])->name('productos.update');
 
-    
+
     //Pedidos
     Route::get('/pedidos/create', [PedidoController::class, 'create'])->name('pedidos.pedidoCreate');
     Route::post('/pedidos', [PedidoController::class, 'store'])->name('pedidos.store');
@@ -61,5 +62,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/clientes', [ClienteController::class, 'store'])->name('clientes.store');
 
 });
+
+// Vue.js API
+Route::get("/api/productos",
+    [api\PedidoController::class, 'index']);
 
 require __DIR__.'/auth.php';
