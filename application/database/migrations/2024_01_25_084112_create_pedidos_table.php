@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('idCliente')->constrained('clientes');
-            $table->foreignId('Usuario')->references('id')->on('users');
+            $table->foreignId('Usuario')->nullable()->constrained('users');
             $table->date('fechaPedido');
             $table->string('direccionEnvio');
             $table->string('estadoPedido');

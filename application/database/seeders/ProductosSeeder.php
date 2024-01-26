@@ -21,14 +21,14 @@ class ProductosSeeder extends Seeder
             'idCategoria' => $categoria2->id,
             'nombreProducto' => 'Producto 1',
             'descripcionProducto' => 'Descripción del producto 1',
-            'fotoURL' => 'https://example.com/producto1.jpg',
+            'fotoURL' => 'https://images.unsplash.com/photo-1600788886242-5c96aabe3757?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         ]);
 
         Producto::create([
             'idCategoria' => $categoria2->id,
             'nombreProducto' => 'Producto 2',
             'descripcionProducto' => 'Descripción del producto 2',
-            'fotoURL' => 'https://example.com/producto2.jpg',
+            'fotoURL' => 'https://images.unsplash.com/photo-1618183479302-1e0aa382c36b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         ]);
 
         for ($i = 3; $i <= 10; $i++) {
@@ -36,7 +36,7 @@ class ProductosSeeder extends Seeder
                 'idCategoria' => $categoria1->id,
                 'nombreProducto' => "Producto $i",
                 'descripcionProducto' => "Descripción del producto $i",
-                'fotoURL' => "https://example.com/producto$i.jpg",
+                'fotoURL' => "https://images.unsplash.com/photo-1612528443702-f6741f70a049?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             ]);
         }
     }
