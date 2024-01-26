@@ -44,7 +44,8 @@ class ProductoController extends Controller
         $producto->update($request->all());
         
         return redirect()->route('productos.productoIndex')
-                            ->with('success', 'Producto actualizado exitosamente.');    }
+                            ->with('success', 'Producto actualizado exitosamente.');    
+    }
 
     public function destroy(Producto $producto)
     {

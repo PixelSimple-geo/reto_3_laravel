@@ -40,12 +40,21 @@
                         <div class="mb-4">
                             <label for="imagen" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Imagen:</label>
                             <input type="url" name="fotoURL" id="imagen" class="form-input mt-1 block w-full" placeholder="Insertar URL de la imagen">
+                        </div>                        
+
+                        <!-- Botones de acción -->
+                        <div class="form-group d-flex justify-content-between">
+                            <!-- Botón de envío -->
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary text-black">{{ __('Crear Producto') }}</button>
+                            </div>
+
+                            <!-- Botón para volver -->
+                            <div class="form-group">
+                                <a href="{{ route('productos.productoIndex') }}" class="btn btn-secondary">{{ __('Volver a los Productos') }}</a>
+                            </div>
                         </div>
 
-                        <!-- Botón de envío -->
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary text-black">{{ __('Crear Producto') }}</button>
-                        </div>
                     </form>
                 </div>
             </div>

@@ -16,7 +16,7 @@
                         {{ __('Tablero') }}
                     </x-nav-link>
 
-                    @if (Auth::user()->rol === 'administrativo')
+                    @if (Auth::user()->rol === 'administrativo' || Auth::user()->rol === 'responsable')
                         <x-nav-link :href="route('clientes.clienteIndex')" :active="request()->routeIs('clientes.index')">
                             {{ __('Clientes') }}
                         </x-nav-link>
@@ -24,8 +24,19 @@
                         <x-nav-link :href="route('productos.productoIndex')" :active="request()->routeIs('productos.catalogo')">
                             {{ __('Catálogo de Productos') }}
                         </x-nav-link>
+
+                        <x-nav-link :href="route('formatos.formatoProductoIndex')" :active="request()->routeIs('formatos.index')">
+                            {{ __('Formatos de producto') }}
+                        </x-nav-link>
+                    @endif
+
+                    @if (Auth::user()->rol === 'responsable')
+                        <x-nav-link :href="route('estadisticas')" :active="request()->routeIs('estadisticas')">
+                            {{ __('Estadísticas') }}
+                        </x-nav-link>
                     @endif
                 </div>
+
 
 
                 

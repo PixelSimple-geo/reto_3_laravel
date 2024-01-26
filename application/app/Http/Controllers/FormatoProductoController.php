@@ -10,20 +10,19 @@ class FormatoProductoController extends Controller
     public function index()
     {
         $formatosProductos = FormatoProducto::all();
-        return response()->json($formatosProductos, 200);
+        return view('formatos.formatoProductoIndex', compact('formatosProductos'));
+    }
+
+    public function create()
+    {
+        return view('formatos.formatoProductoCreate');
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'idProducto' => 'required|exists:productos,id',
-            'formatoEnvase' => 'required|string',
-            'unidades' => 'required|integer',
-            'precioUnitario' => 'required|numeric'
-        ]);
-
         $formatoProducto = FormatoProducto::create($request->all());
-        return response()->json($formatoProducto, 201);
+        return redirect()->route('formatos.formatoProductoIndex')
+                            ->with('success', 'Formato creado exitosamente.');    
     }
 
     public function show(FormatoProducto $formatoProducto)
@@ -31,22 +30,21 @@ class FormatoProductoController extends Controller
         return response()->json($formatoProducto, 200);
     }
 
+    public function edit(FormatoProducto $formatoProducto)
+    {
+        return view('formatos.formatoProductoEdit', compact('formatoProducto'));
+    }
+
     public function update(Request $request, FormatoProducto $formatoProducto)
     {
-        $request->validate([
-            'idProducto' => 'required|exists:productos,id',
-            'formatoEnvase' => 'required|string',
-            'unidades' => 'required|integer',
-            'precioUnitario' => 'required|numeric'
-        ]);
-
         $formatoProducto->update($request->all());
-        return response()->json($formatoProducto, 200);
+        return redirect()->route('formatos.formatoProductoIndex')
+                        ->with('success', 'Formato actualizado exitosamente.');       
     }
 
     public function destroy(FormatoProducto $formatoProducto)
     {
         $formatoProducto->delete();
-        return response()->json(null, 204);
-    }
+        return redirect()->route('formatos.formatoProductoIndex')
+                            ->with('success', 'Formato eliminado exitosamente.');        }
 }

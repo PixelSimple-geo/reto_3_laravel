@@ -19,6 +19,8 @@ use App\Http\Controllers\TableroController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\FormatoProductoController;
+
 
 
 //Inicio
@@ -43,7 +45,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/productos/{producto}/edit', [ProductoController::class, 'edit'])->name('productos.productoEdit');
     Route::delete('/productos/{producto}', [ProductoController::class, 'destroy'])->name('productos.destroy');
     Route::put('/productos/{producto}', [ProductoController::class, 'update'])->name('productos.update');
-
     
     //Pedidos
     Route::get('/pedidos/create', [PedidoController::class, 'create'])->name('pedidos.pedidoCreate');
@@ -60,6 +61,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/clientes/create', [ClienteController::class, 'create'])->name('clientes.clienteCreate');
     Route::post('/clientes', [ClienteController::class, 'store'])->name('clientes.store');
 
+    //Formatos
+    Route::get('/formatoProductos', [FormatoProductoController::class, 'index'])->name('formatos.formatoProductoIndex');
+    Route::post('/formatoProductos', [FormatoProductoController::class, 'store'])->name('formatos.formatoProductoStore');
+    Route::get('/formatoProductos/{formatoProducto}/edit', [FormatoProductoController::class, 'edit'])->name('formatos.formatoProductoEdit');
+    Route::delete('/formatoProductos/{formatoProducto}', [FormatoProductoController::class, 'destroy'])->name('formatoProductos.destroy');
+    Route::put('/formatoProductos/{formatoProducto}', [FormatoProductoController::class, 'update'])->name('formatoProductos.update');
+    Route::get('/formato/create', [FormatoProductoController::class, 'create'])->name('formatos.formatoProductoCreate');
+
+    //Tickets
+
+    //Estadisticas
+    Route::get('/estadisticas', function () {
+        return view('estadisticas.estadisticas');
+    })->name('estadisticas');
+    
 });
 
 require __DIR__.'/auth.php';

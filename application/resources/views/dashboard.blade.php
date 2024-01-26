@@ -48,7 +48,7 @@
                                 </tbody>
                             </table>
                         </div>
-                    @elseif (auth()->user()->hasRole('administrativo'))
+                        @elseif (auth()->user()->hasRole('administrativo') || auth()->user()->hasRole('responsable'))
                         <h3 class="text-lg font-semibold mb-4">Lista de Todos los Pedidos</h3>
                         <a href="{{ route('pedidos.pedidoCreate') }}" class="btn btn-primary">Crear Pedido</a>
                         <div class="table-responsive">
