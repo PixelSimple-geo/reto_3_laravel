@@ -19,6 +19,7 @@ use App\Http\Controllers\TableroController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\api;
 use App\Http\Controllers\FormatoProductoController;
 use App\Http\Controllers\TicketProductoController;
 
@@ -38,7 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
+
     //Productos
     Route::get('/productos', [ProductoController::class, 'index'])->name('productos.productoIndex');
     Route::get('/productos/create', [ProductoController::class, 'create'])->name('productos.productoCreate');
@@ -46,7 +47,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/productos/{producto}/edit', [ProductoController::class, 'edit'])->name('productos.productoEdit');
     Route::delete('/productos/{producto}', [ProductoController::class, 'destroy'])->name('productos.destroy');
     Route::put('/productos/{producto}', [ProductoController::class, 'update'])->name('productos.update');
-    
+
+
     //Pedidos
     Route::get('/pedidos/create', [PedidoController::class, 'create'])->name('pedidos.pedidoCreate');
     Route::post('/pedidos', [PedidoController::class, 'store'])->name('pedidos.store');
@@ -77,13 +79,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/tickets/{idPedido}/{idFormatoProducto}/edit', [TicketProductoController::class, 'edit'])->name('tickets.ticketEdit');
     Route::put('/tickets/{idPedido}/{idFormatoProducto}', [TicketProductoController::class, 'update'])->name('tickets.ticketUpdate');
     Route::delete('/tickets/{ticket}', [TicketProductoController::class, 'destroy'])->name('tickets.ticketDestroy');
-  
-    
+
+
     //Estadisticas
     Route::get('/estadisticas', function () {
         return view('estadisticas.estadisticas');
     })->name('estadisticas');
-    
+
 });
+
+// Vue.js API
+Route::get("/api/productos",
+    [api\PedidoController::class, 'index']);
 
 require __DIR__.'/auth.php';

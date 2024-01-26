@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('idCliente')->constrained('clientes');
-            $table->foreignId('Usuario')->constrained('users');
+            $table->foreignId('Usuario')->nullable()->constrained('users');
             $table->date('fechaPedido');
             $table->string('direccionEnvio');
             $table->string('estadoPedido');
             $table->timestamps();
         });
+        DB::statement("ALTER TABLE pedidos ADD CHECK (estadoPedido IN ('Solicitado', 'En preparación', 'En entrega', 'entregado'))");
     }
 
     /**
