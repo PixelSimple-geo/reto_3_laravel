@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Facades\Redirect;
 
 class ClienteController extends Controller
 {
@@ -24,9 +24,9 @@ class ClienteController extends Controller
 
     public function store(Request $request)
     {
-        $cliente = Cliente::create($request->all());
-        return redirect()->route('clientes.clienteIndex')
-                            ->with('success', 'Cliente creado exitosamente.');      }
+        $cliente = Cliente::create($request->all());   
+        return Redirect::route('clientes.clienteIndex')->with('success', 'Cliente creado exitosamente.');
+    }
 
     public function edit(Cliente $cliente)
     {
@@ -42,13 +42,14 @@ class ClienteController extends Controller
     public function update(Request $request, Cliente $cliente)
     {
         $cliente->update($request->all());
-        return redirect()->route('clientes.clienteIndex')
-                            ->with('success', 'Cliente actualizado exitosamente.');    
+        return Redirect::route('clientes.clienteIndex')->with('success', 'Cliente modificado exitosamente.');
+    
+                            
     }
 
     public function destroy(Cliente $cliente)
     {
         $cliente->delete();
-        return redirect()->route('clientes.clienteIndex')
-                            ->with('success', 'Cliente eliminado exitosamente.');      }
+        return Redirect::route('clientes.clienteIndex')->with('success', 'Cliente eliminado exitosamente.');
+    }  
 }

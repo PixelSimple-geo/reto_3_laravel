@@ -32,7 +32,7 @@ class TicketProductoController extends Controller
             'unidades' => $unidades,
         ]);
 
-        return Redirect::route('tickets.ticketIndex')->with('success', 'TicketProducto creado exitosamente.');
+        return Redirect::route('tickets.ticketIndex')->with('success', 'Ticket creado exitosamente.');
     }
 
     public function show(TicketProducto $ticketProducto)

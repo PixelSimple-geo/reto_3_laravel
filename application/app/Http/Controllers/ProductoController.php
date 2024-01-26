@@ -6,7 +6,7 @@ use App\Models\Producto;
 use App\Models\Categoria; 
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Redirect;
 
 class ProductoController extends Controller
 {
@@ -25,7 +25,7 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         $producto = Producto::create($request->all());
-        return redirect()->route('productos.productoIndex')->with('success', 'Producto creado exitosamente.');
+        return Redirect::route('productos.productoIndex')->with('success', 'Producto creado exitosamente.');
     }
 
     public function show(Producto $producto)
@@ -43,14 +43,14 @@ class ProductoController extends Controller
     {
         $producto->update($request->all());
         
-        return redirect()->route('productos.productoIndex')
-                            ->with('success', 'Producto actualizado exitosamente.');    
+        return Redirect::route('productos.productoIndex')->with('success', 'Producto modificado exitosamente.');
+ 
     }
 
     public function destroy(Producto $producto)
     {
         $producto->delete();
-        return redirect()->route('productos.productoIndex')->with('success', 'Producto eliminado exitosamente.');
+        return Redirect::route('productos.productoIndex')->with('success', 'Producto eliminado exitosamente.');
     }
 }
     

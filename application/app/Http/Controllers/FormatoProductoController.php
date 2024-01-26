@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\FormatoProducto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class FormatoProductoController extends Controller
 {
@@ -21,8 +22,7 @@ class FormatoProductoController extends Controller
     public function store(Request $request)
     {
         $formatoProducto = FormatoProducto::create($request->all());
-        return redirect()->route('formatos.formatoProductoIndex')
-                            ->with('success', 'Formato creado exitosamente.');    
+        return Redirect::route('formatos.formatoProductoIndex')->with('success', 'Formato creado exitosamente.');
     }
 
     public function show(FormatoProducto $formatoProducto)
@@ -38,13 +38,13 @@ class FormatoProductoController extends Controller
     public function update(Request $request, FormatoProducto $formatoProducto)
     {
         $formatoProducto->update($request->all());
-        return redirect()->route('formatos.formatoProductoIndex')
-                        ->with('success', 'Formato actualizado exitosamente.');       
+        return Redirect::route('formatos.formatoProductoIndex')->with('success', 'Formato modificado exitosamente.');
+      
     }
 
     public function destroy(FormatoProducto $formatoProducto)
     {
         $formatoProducto->delete();
-        return redirect()->route('formatos.formatoProductoIndex')
-                            ->with('success', 'Formato eliminado exitosamente.');        }
+        return Redirect::route('formatos.formatoProductoIndex')->with('success', 'Formato eliminado exitosamente.');
+    }
 }
