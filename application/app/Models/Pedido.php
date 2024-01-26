@@ -15,4 +15,9 @@ class Pedido extends Model
     {
         return $this->belongsTo(Cliente::class, 'idCliente');
     }
+
+    public function ticketProductos()
+    {
+        return $this->hasMany(TicketProducto::class, 'idPedido');
+    }
 }

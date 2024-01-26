@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('ticket_producto', function (Blueprint $table) {
             $table->foreignId('idPedido')->constrained('pedidos');
-            $table->foreignId('idFormatoProducto')->constrained('formato_producto');
+            $table->foreignId('idFormatoProducto')->constrained('formato_productos');
             $table->integer('unidades');
             $table->primary(['idPedido', 'idFormatoProducto']);
         });
