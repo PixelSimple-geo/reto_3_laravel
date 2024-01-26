@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Pedido;
 use App\Models\Cliente;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 
 class PedidoController extends Controller
@@ -35,7 +36,7 @@ class PedidoController extends Controller
     
         $pedido->save();
     
-        return redirect()->route('dashboard')->with('success', 'Pedido creado exitosamente.');
+        return Redirect::route('dashboard')->with('success', 'Pedido creado exitosamente.');
     }
 
     public function show(Pedido $pedido)
@@ -59,15 +60,13 @@ class PedidoController extends Controller
             'estadoPedido' => $request->estado,
         ]);
 
-        return redirect()->route('dashboard')
-                     ->with('success', 'Pedido actualizado exitosamente.');
+        return Redirect::route('dashboard')->with('success', 'Pedido modificado exitosamente.');
+
     }
 
     public function destroy(Pedido $pedido)
     {
         $pedido->delete();
-
-        return redirect()->route('dashboard')
-                         ->with('success', 'Pedido eliminado exitosamente.');
+        return Redirect::route('dashboard')->with('success', 'Pedido eliminado exitosamente.');
     }
 }

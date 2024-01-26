@@ -15,16 +15,24 @@ class TicketProductoController extends Controller
         return view('tickets.ticketIndex', compact('tickets'));
     }
 
+    public function create()
+    {
+        return view('tickets.ticketCreate');
+    }
+
     public function store(Request $request)
     {
-        $request->validate([
-            'idPedido' => 'required|exists:pedidos,id',
-            'idFormatoProducto' => 'required|exists:formato_productos,id',
-            'unidades' => 'required|integer'
+        $idPedido = $request->input('idPedido');
+        $idFormatoProducto = $request->input('idFormatoProducto');
+        $unidades = $request->input('unidades');
+
+        DB::table('ticket_producto')->insert([
+            'idPedido' => $idPedido,
+            'idFormatoProducto' => $idFormatoProducto,
+            'unidades' => $unidades,
         ]);
 
-        TicketProducto::create($request->all());
-        return Redirect::route('tickets.ticketIndex')->with('success', 'TicketProducto creado exitosamente.');
+        return Redirect::route('tickets.ticketIndex')->with('success', 'Ticket creado exitosamente.');
     }
 
     public function show(TicketProducto $ticketProducto)
@@ -56,16 +64,20 @@ class TicketProductoController extends Controller
                             ]);
 
             if($affectedRows > 0) {
-                return redirect()->route('tickets.ticketIndex');
+                return Redirect::route('tickets.ticketIndex')->with('success', 'Ticket modificado exitosamente.');
             } else {
                 echo "error update";
             }
         }
                 
 
-    public function destroy(TicketProducto $ticketProducto)
-    {
-        $ticketProducto->delete();
-        return Redirect::route('tickets.ticketIndex')->with('success', 'TicketProducto eliminado exitosamente.');
-    }
+        public function destroy($idPedido, $idFormatoProducto)
+        {
+            DB::table('ticket_producto')
+                    ->where('idPedido', $idPedido)
+                    ->where('idFormatoProducto', $idFormatoProducto)
+                    ->delete();
+        
+            return Redirect::route('tickets.ticketIndex')->with('success', 'Ticket eliminado exitosamente.');
+        }
 }

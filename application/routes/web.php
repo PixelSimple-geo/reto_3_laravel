@@ -78,7 +78,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/tickets', [TicketProductoController::class, 'store'])->name('tickets.ticketStore');
     Route::get('/tickets/{idPedido}/{idFormatoProducto}/edit', [TicketProductoController::class, 'edit'])->name('tickets.ticketEdit');
     Route::put('/tickets/{idPedido}/{idFormatoProducto}', [TicketProductoController::class, 'update'])->name('tickets.ticketUpdate');
-    Route::delete('/tickets/{ticket}', [TicketProductoController::class, 'destroy'])->name('tickets.ticketDestroy');
+    Route::delete('/tickets/{idPedido}/{idFormatoProducto}', [TicketProductoController::class, 'destroy'])->name('tickets.ticketDestroy');
 
 
     //Estadisticas
