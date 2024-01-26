@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class ClienteController extends Controller
 {
@@ -13,11 +15,18 @@ class ClienteController extends Controller
         return view("clientes.clienteIndex", compact('clientes'));
     }
 
+    public function create()
+    {
+        $codigoCliente = strtoupper(Str::random(8));
+
+        return view('clientes.clienteCreate', compact('codigoCliente'));
+    }
+
     public function store(Request $request)
     {
         $cliente = Cliente::create($request->all());
-        return response()->json($cliente, 201);
-    }
+        return redirect()->route('clientes.clienteIndex')
+                            ->with('success', 'Cliente creado exitosamente.');      }
 
     public function edit(Cliente $cliente)
     {
@@ -34,7 +43,8 @@ class ClienteController extends Controller
     {
         $cliente->update($request->all());
         return redirect()->route('clientes.clienteIndex')
-                            ->with('success', 'Cliente actualizado exitosamente.');    }
+                            ->with('success', 'Cliente actualizado exitosamente.');    
+    }
 
     public function destroy(Cliente $cliente)
     {
