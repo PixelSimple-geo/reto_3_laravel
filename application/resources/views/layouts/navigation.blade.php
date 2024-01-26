@@ -28,6 +28,10 @@
                         <x-nav-link :href="route('formatos.formatoProductoIndex')" :active="request()->routeIs('formatos.index')">
                             {{ __('Formatos de producto') }}
                         </x-nav-link>
+
+                        <x-nav-link :href="route('tickets.ticketIndex')" :active="request()->routeIs('tickets.ticketIndex')">
+                            {{ __('Tickets') }}
+                        </x-nav-link>
                     @endif
 
                     @if (Auth::user()->rol === 'responsable')

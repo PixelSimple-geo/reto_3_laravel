@@ -20,6 +20,7 @@ use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\FormatoProductoController;
+use App\Http\Controllers\TicketProductoController;
 
 
 
@@ -70,7 +71,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/formato/create', [FormatoProductoController::class, 'create'])->name('formatos.formatoProductoCreate');
 
     //Tickets
-
+    Route::get('/tickets', [TicketProductoController::class, 'index'])->name('tickets.ticketIndex');
+    Route::get('/tickets/create', [TicketProductoController::class, 'create'])->name('tickets.ticketCreate');
+    Route::post('/tickets', [TicketProductoController::class, 'store'])->name('tickets.ticketStore');
+    Route::get('/tickets/{idPedido}/{idFormatoProducto}/edit', [TicketProductoController::class, 'edit'])->name('tickets.ticketEdit');
+    Route::put('/tickets/{idPedido}/{idFormatoProducto}', [TicketProductoController::class, 'update'])->name('tickets.ticketUpdate');
+    Route::delete('/tickets/{ticket}', [TicketProductoController::class, 'destroy'])->name('tickets.ticketDestroy');
+  
+    
     //Estadisticas
     Route::get('/estadisticas', function () {
         return view('estadisticas.estadisticas');
