@@ -14,6 +14,9 @@
                             {{ session('success') }}
                         </div>
                     @endif
+
+                    <a href="{{ route('tickets.ticketCreate') }}" class="btn btn-primary">Crear Ticket</a>
+                    <h3 class="text-lg font-semibold mb-4">Lista de Tickets</h3>
                     <table class="table table-striped">
                         <thead>
                             <tr>

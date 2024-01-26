@@ -49,6 +49,6 @@ class ClienteController extends Controller
     public function destroy(Cliente $cliente)
     {
         $cliente->delete();
-        return response()->json(null, 204);
-    }
+        return redirect()->route('clientes.clienteIndex')
+                            ->with('success', 'Cliente eliminado exitosamente.');      }
 }

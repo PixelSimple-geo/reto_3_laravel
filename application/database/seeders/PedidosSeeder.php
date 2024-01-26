@@ -25,7 +25,7 @@ class PedidosSeeder extends Seeder
             'Usuario' => $user1->id,
             'fechaPedido' => now(),
             'direccionEnvio' => '123 Main St',
-            'estadoPedido' => 'Pending',
+            'estadoPedido' => 'Solicitado',
         ]);
 
         Pedido::create([
@@ -33,7 +33,7 @@ class PedidosSeeder extends Seeder
             'Usuario' => $user2->id,
             'fechaPedido' => now(),
             'direccionEnvio' => '456 Second St',
-            'estadoPedido' => 'Processing',
+            'estadoPedido' => 'En preparación',
         ]);
 
         Pedido::create([
@@ -41,7 +41,7 @@ class PedidosSeeder extends Seeder
             'Usuario' => $user2->id,
             'fechaPedido' => now(),
             'direccionEnvio' => '789 Third St',
-            'estadoPedido' => 'Delivered',
+            'estadoPedido' => 'En entrega',
         ]);
     }
 }
