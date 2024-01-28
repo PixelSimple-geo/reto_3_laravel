@@ -18,7 +18,7 @@
 
                     @if (Auth::user()->rol === 'administrativo' || Auth::user()->rol === 'responsable')
                         <x-nav-link :href="route('clientes.clienteIndex')" :active="request()->routeIs('clientes.index')">
-                            {{ __('Clientes') }}
+                            {{ __('ClientesSeeder') }}
                         </x-nav-link>
 
                         <x-nav-link :href="route('productos.productoIndex')" :active="request()->routeIs('productos.catalogo')">
@@ -43,7 +43,7 @@
 
 
 
-                
+
             </div>
 
             <!-- Settings Dropdown -->
@@ -100,7 +100,7 @@
             </x-responsive-nav-link>
             @if (Auth::user()->rol === 'administrativo')
                         <x-responsive-nav-link :href="route('clientes.clienteIndex')" :active="request()->routeIs('clientes.index')">
-                            {{ __('Clientes') }}
+                            {{ __('ClientesSeeder') }}
                         </x-responsive-nav-link>
 
                         <x-responsive-nav-link :href="route('productos.productoIndex')" :active="request()->routeIs('productos.catalogo')">

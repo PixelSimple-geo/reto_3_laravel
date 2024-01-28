@@ -37,7 +37,7 @@
                             </div>
 
                             <div class="form-group">
-                                <a href="{{ route('clientes.clienteIndex') }}" class="btn btn-secondary">{{ __('Volver a los Clientes') }}</a>
+                                <a href="{{ route('clientes.clienteIndex') }}" class="btn btn-secondary">{{ __('Volver a los ClientesSeeder') }}</a>
                             </div>
                         </div>
                     </form>

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Lista de Clientes') }}
+            {{ __('Lista de ClientesSeeder') }}
         </h2>
     </x-slot>
 
@@ -10,7 +10,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-600">
                     <a href="{{ route('clientes.clienteCreate') }}" class="btn btn-primary">Crear Cliente</a>
-    
+
                     <h3 class="text-lg font-semibold mb-4">Lista de Clientes</h3>
                     <table class="table table-striped">
                         <thead>

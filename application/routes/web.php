@@ -56,7 +56,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/pedidos/{pedido}', [PedidoController::class, 'update'])->name('pedidos.update');
     Route::delete('/pedidos/{pedido}', [PedidoController::class, 'destroy'])->name('pedidos.destroy');
 
-    //Clientes
+    //ClientesSeeder
     Route::get('/clientes', [ClienteController::class, 'index'])->name('clientes.clienteIndex');
     Route::get('/clientes/{cliente}/edit', [ClienteController::class, 'edit'])->name('clientes.edit');
     Route::delete('/clientes/{cliente}', [ClienteController::class, 'destroy'])->name('clientes.destroy');
@@ -89,8 +89,11 @@ Route::middleware('auth')->group(function () {
 });
 
 // Vue.js API
-Route::get("/api/productos", [api\PedidoController::class, 'index']);
-Route::post("/api/productos/store", [api\PedidoController::class, 'store']);
-Route::get("/api/crsf", [api\PedidoController::class, 'getCsrfToken']);
+Route::get("/api/pedidos", [api\PedidoController::class, 'index']);
+Route::post("/api/pedidos/store", [api\PedidoController::class, 'store']);
+Route::delete("/api/pedidos/{id}", [api\PedidoController::class, "destroy"]);
+
+Route::get("/api/productos", [api\ProductoController::class, 'index']);
+Route::post("/api/sesion", [api\SesionClienteController::class, 'store']);
 
 require __DIR__.'/auth.php';

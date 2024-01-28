@@ -15,4 +15,9 @@ class Producto extends Model
     {
         return $this->belongsTo(Categoria::class, 'idCategoria');
     }
+
+    public function formatosProducto()
+    {
+        return $this->hasMany(FormatoProducto::class, 'id');
+    }
 }

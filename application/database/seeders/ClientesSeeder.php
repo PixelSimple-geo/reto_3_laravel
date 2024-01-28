@@ -6,7 +6,7 @@ use App\Models\Cliente;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class Clientes extends Seeder
+class ClientesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,14 +14,14 @@ class Clientes extends Seeder
     public function run(): void
     {
         Cliente::create([
-            'codigoCliente' => 'C001',
+            'codigoCliente' => '12345678',
             'nombreCliente' => 'John',
             'apellidoCliente' => 'Doe',
             'correoCliente' => 'john.doe@example.com',
         ]);
 
         Cliente::create([
-            'codigoCliente' => 'C002',
+            'codigoCliente' => '87654321',
             'nombreCliente' => 'Jane',
             'apellidoCliente' => 'Doe',
             'correoCliente' => 'jane.doe@example.com',

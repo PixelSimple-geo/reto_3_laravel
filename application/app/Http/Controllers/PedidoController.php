@@ -8,7 +8,6 @@ use App\Models\Cliente;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
-
 class PedidoController extends Controller
 {
     public function index()
@@ -26,16 +25,16 @@ class PedidoController extends Controller
     public function store(Request $request)
     {
         $usuario = Auth::user();
-    
+
         $pedido = new Pedido();
-        $pedido->Usuario = $usuario->id; 
-        $pedido->idCliente = $request->idCliente; 
+        $pedido->Usuario = $usuario->id;
+        $pedido->idCliente = $request->idCliente;
         $pedido->fechaPedido = $request->fecha;
         $pedido->direccionEnvio = $request->direccion;
         $pedido->estadoPedido = $request->estado;
-    
+
         $pedido->save();
-    
+
         return Redirect::route('dashboard')->with('success', 'Pedido creado exitosamente.');
     }
 
@@ -61,7 +60,6 @@ class PedidoController extends Controller
         ]);
 
         return Redirect::route('dashboard')->with('success', 'Pedido modificado exitosamente.');
-
     }
 
     public function destroy(Pedido $pedido)
