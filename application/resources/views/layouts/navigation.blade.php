@@ -42,6 +42,12 @@
                     @endif
                 </div>
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> origin/develop
             </div>
 
             <!-- Settings Dropdown -->
@@ -96,10 +102,17 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Tablero') }}
             </x-responsive-nav-link>
+<<<<<<< HEAD
             @if (Auth::user()->rol === 'administrativo' || Auth::user()->rol === 'responsable')
                 <x-responsive-nav-link :href="route('clientes.clienteIndex')" :active="request()->routeIs('clientes.index')">
                     {{ __('Clientes') }}
                 </x-responsive-nav-link>
+=======
+            @if (Auth::user()->rol === 'administrativo')
+                        <x-responsive-nav-link :href="route('clientes.clienteIndex')" :active="request()->routeIs('clientes.index')">
+                            {{ __('ClientesSeeder') }}
+                        </x-responsive-nav-link>
+>>>>>>> origin/develop
 
                 <x-responsive-nav-link :href="route('productos.productoIndex')" :active="request()->routeIs('productos.catalogo')">
                     {{ __('Catálogo de Productos') }}
