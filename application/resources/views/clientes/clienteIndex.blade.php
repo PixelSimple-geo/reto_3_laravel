@@ -12,9 +12,9 @@
 
                     @include('parciales.success')
 
+                    <h3 class="text-lg font-semibold mb-4">Lista de Clientes</h3>
                     <a href="{{ route('clientes.clienteCreate') }}" class="btn btn-primary">Crear Cliente</a>
 
-                    <h3 class="text-lg font-semibold mb-4">Lista de Clientes</h3>
                     <table class="table table-striped">
                         <thead>
                             <tr>

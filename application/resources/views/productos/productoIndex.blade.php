@@ -12,8 +12,9 @@
 
                     @include('parciales.success')
 
-                    <a href="{{ route('productos.productoCreate') }}" class="btn btn-primary">Crear Producto</a>
                     <h3 class="text-lg font-semibold mb-4">Lista de Productos</h3>
+                    <a href="{{ route('productos.productoCreate') }}" class="btn btn-primary">Crear Producto</a>
+
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
