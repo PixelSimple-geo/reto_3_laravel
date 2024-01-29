@@ -15,7 +15,7 @@ class TicketProductoController extends Controller
 {
     public function index()
     {
-        $tickets = TicketProducto::with('formatoProducto')->get();
+        $tickets = TicketProducto::with('formatoProducto')->paginate(5); 
         return view('tickets.ticketIndex', compact('tickets'));
     }
 

@@ -11,7 +11,7 @@ class ClienteController extends Controller
 {
     public function index()
     {
-        $clientes = Cliente::all();
+        $clientes = Cliente::paginate(5);
         return view("clientes.clienteIndex", compact('clientes'));
     }
 
@@ -42,9 +42,7 @@ class ClienteController extends Controller
     public function update(Request $request, Cliente $cliente)
     {
         $cliente->update($request->all());
-        return Redirect::route('clientes.clienteIndex')->with('success', 'Cliente modificado exitosamente.');
-    
-                            
+        return Redirect::route('clientes.clienteIndex')->with('success', 'Cliente modificado exitosamente.');                        
     }
 
     public function destroy(Cliente $cliente)

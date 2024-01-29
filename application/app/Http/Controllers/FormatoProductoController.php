@@ -12,7 +12,7 @@ class FormatoProductoController extends Controller
 {
     public function index()
     {
-        $formatosProductos = FormatoProducto::all();
+        $formatosProductos = FormatoProducto::paginate(5);
         return view('formatos.formatoProductoIndex', compact('formatosProductos'));
     }
 

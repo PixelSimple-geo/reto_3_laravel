@@ -39,8 +39,9 @@
                                     <option value="Entregado" {{ request('estado') == 'Entregado' ? 'selected' : '' }}>Entregado</option>
                                 </select>
                             </div>
-                            <div class="col-md-3 mb-2 d-flex">
+                            <div class="col-md-3 mb-2 d-flex align-self-end">
                                 <button type="submit" class="btn btn-primary text-black">Filtrar</button>
+                                <button type="reset" class="btn btn-secondary ms-2 text-black" >Resetear</button> <!-- Botón de reseteo -->
                             </div>
                         </form>
                     </div>

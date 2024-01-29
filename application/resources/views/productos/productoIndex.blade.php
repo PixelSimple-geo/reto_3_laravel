@@ -52,11 +52,11 @@
                                                     <button type="submit" class="btn btn-danger text-black" onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?')">Eliminar</button>
                                                 </form>
                                             </td>
-
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
+                        {{ $productos->links() }}
                     </div>
                 </div>
             </div>

@@ -50,6 +50,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{ $formatosProductos->links() }}
                     </div>
                 </div>
             </div>
