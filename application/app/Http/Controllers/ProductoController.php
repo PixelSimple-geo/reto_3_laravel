@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producto;
-use App\Models\Categoria; 
+use App\Models\Categoria;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -42,9 +42,9 @@ class ProductoController extends Controller
     public function update(Request $request, Producto $producto)
     {
         $producto->update($request->all());
-        
+
         return Redirect::route('productos.productoIndex')->with('success', 'Producto modificado exitosamente.');
- 
+
     }
 
     public function destroy(Producto $producto)
@@ -53,4 +53,3 @@ class ProductoController extends Controller
         return Redirect::route('productos.productoIndex')->with('success', 'Producto eliminado exitosamente.');
     }
 }
-    
