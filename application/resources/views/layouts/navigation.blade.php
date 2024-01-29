@@ -32,6 +32,7 @@
                         <x-nav-link :href="route('tickets.ticketIndex')" :active="request()->routeIs('tickets.ticketIndex')">
                             {{ __('Tickets') }}
                         </x-nav-link>
+                        
                     @endif
 
                     @if (Auth::user()->rol === 'responsable')
