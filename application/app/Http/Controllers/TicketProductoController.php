@@ -6,6 +6,8 @@ use App\Models\TicketProducto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
+use App\Models\Pedido;
+use App\Models\FormatoProducto;
 
 class TicketProductoController extends Controller
 {
@@ -17,7 +19,10 @@ class TicketProductoController extends Controller
 
     public function create()
     {
-        return view('tickets.ticketCreate');
+        $pedidos = Pedido::all(); 
+        $formatosProducto = FormatoProducto::all();
+
+        return view('tickets.ticketCreate', compact('pedidos', 'formatosProducto'));
     }
 
     public function store(Request $request)

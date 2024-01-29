@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\FormatoProducto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\Producto;
+
 
 class FormatoProductoController extends Controller
 {
@@ -16,7 +18,8 @@ class FormatoProductoController extends Controller
 
     public function create()
     {
-        return view('formatos.formatoProductoCreate');
+        $productos = Producto::all();
+        return view('formatos.formatoProductoCreate', compact('productos'));
     }
 
     public function store(Request $request)

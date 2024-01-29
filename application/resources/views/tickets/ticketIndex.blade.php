@@ -14,36 +14,38 @@
 
                     <a href="{{ route('tickets.ticketCreate') }}" class="btn btn-primary">Crear Ticket</a>
                     <h3 class="text-lg font-semibold mb-4">Lista de Tickets</h3>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>ID Pedido</th>
-                                <th>ID Formato Producto</th>
-                                <th>Unidades</th>
-                                <th>Modificar</th>
-                                <th>Eliminar</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($tickets as $ticket)
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
                                 <tr>
-                                    <td>{{ $ticket->idPedido }}</td>
-                                    <td>{{ $ticket->idFormatoProducto }}</td>
-                                    <td>{{ $ticket->unidades }}</td>
-                                    <td>
-                                        <a href="{{ route('tickets.ticketEdit', ['idPedido' => $ticket->idPedido, 'idFormatoProducto' => $ticket->idFormatoProducto]) }}" class="btn btn-primary">Editar</a>
-                                    </td>
-                                    <td>
-                                        <form action="{{ route('tickets.ticketDestroy', [$ticket->idPedido, $ticket->idFormatoProducto]) }}" method="POST" style="display: inline-block;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger text-black" onclick="return confirm('¿Estás seguro de que deseas eliminar este ticket?')">Eliminar</button>
-                                        </form>
-                                    </td>
+                                    <th>ID Pedido</th>
+                                    <th>ID Formato Producto</th>
+                                    <th>Unidades</th>
+                                    <th>Modificar</th>
+                                    <th>Eliminar</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach ($tickets as $ticket)
+                                    <tr>
+                                        <td>{{ $ticket->idPedido }}</td>
+                                        <td>{{ $ticket->idFormatoProducto }}</td>
+                                        <td>{{ $ticket->unidades }}</td>
+                                        <td>
+                                            <a href="{{ route('tickets.ticketEdit', ['idPedido' => $ticket->idPedido, 'idFormatoProducto' => $ticket->idFormatoProducto]) }}" class="btn btn-primary">Editar</a>
+                                        </td>
+                                        <td>
+                                            <form action="{{ route('tickets.ticketDestroy', [$ticket->idPedido, $ticket->idFormatoProducto]) }}" method="POST" style="display: inline-block;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger text-black" onclick="return confirm('¿Estás seguro de que deseas eliminar este ticket?')">Eliminar</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

@@ -12,15 +12,24 @@
                     <form action="{{ route('tickets.ticketStore') }}" method="POST">
                         @csrf
 
-                        <!-- Campos de creación -->
-                        <div class="mb-4">
+                       <div class="mb-4">
                             <label for="idPedido" class="block text-sm font-medium text-gray-700 dark:text-gray-300">ID Pedido:</label>
-                            <input type="text" name="idPedido" id="idPedido" class="form-input mt-1 block w-full" required>
+                            <select name="idPedido" id="idPedido" class="form-select mt-1 block w-full" required>
+                                <option value="" disabled selected>Selecciona un Pedido</option>
+                                @foreach($pedidos as $pedido)
+                                    <option value="{{ $pedido->id }}">{{ $pedido->id }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="mb-4">
                             <label for="idFormatoProducto" class="block text-sm font-medium text-gray-700 dark:text-gray-300">ID Formato Producto:</label>
-                            <input type="text" name="idFormatoProducto" id="idFormatoProducto" class="form-input mt-1 block w-full" required>
+                            <select name="idFormatoProducto" id="idFormatoProducto" class="form-select mt-1 block w-full" required>
+                                <option value="" disabled selected>Selecciona un Formato de Producto</option>
+                                @foreach($formatosProducto as $formatoProducto)
+                                    <option value="{{ $formatoProducto->id }}">{{ $formatoProducto->id }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="mb-4">

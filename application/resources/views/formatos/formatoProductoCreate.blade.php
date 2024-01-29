@@ -15,7 +15,12 @@
                         <!-- ID del Producto -->
                         <div class="mb-4">
                             <label for="idProducto" class="block text-sm font-medium text-gray-700 dark:text-gray-300">ID del Producto:</label>
-                            <input type="text" name="idProducto" id="idProducto" class="form-input mt-1 block w-full" required>
+                            <select name="idProducto" id="idProducto" class="form-select mt-1 block w-full" required>
+                                <option value="" disabled selected>Selecciona un Producto</option>
+                                @foreach($productos as $producto)
+                                    <option value="{{ $producto->id }}">{{ $producto->nombreProducto }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <!-- Formato de Envase -->

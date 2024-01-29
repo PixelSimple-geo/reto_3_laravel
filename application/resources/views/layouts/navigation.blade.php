@@ -17,15 +17,15 @@
                     </x-nav-link>
 
                     @if (Auth::user()->rol === 'administrativo' || Auth::user()->rol === 'responsable')
-                        <x-nav-link :href="route('clientes.clienteIndex')" :active="request()->routeIs('clientes.index')">
+                        <x-nav-link :href="route('clientes.clienteIndex')" :active="request()->routeIs('clientes.clienteIndex')">
                             {{ __('Clientes') }}
                         </x-nav-link>
 
-                        <x-nav-link :href="route('productos.productoIndex')" :active="request()->routeIs('productos.catalogo')">
+                        <x-nav-link :href="route('productos.productoIndex')" :active="request()->routeIs('productos.productoIndex')">
                             {{ __('Catálogo de Productos') }}
                         </x-nav-link>
 
-                        <x-nav-link :href="route('formatos.formatoProductoIndex')" :active="request()->routeIs('formatos.index')">
+                        <x-nav-link :href="route('formatos.formatoProductoIndex')" :active="request()->routeIs('formatos.formatoProductoIndex')">
                             {{ __('Formatos de producto') }}
                         </x-nav-link>
 
@@ -42,9 +42,6 @@
                     @endif
                 </div>
 
-
-
-                
             </div>
 
             <!-- Settings Dropdown -->
@@ -99,15 +96,30 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Tablero') }}
             </x-responsive-nav-link>
-            @if (Auth::user()->rol === 'administrativo')
-                        <x-responsive-nav-link :href="route('clientes.clienteIndex')" :active="request()->routeIs('clientes.index')">
-                            {{ __('Clientes') }}
-                        </x-responsive-nav-link>
+            @if (Auth::user()->rol === 'administrativo' || Auth::user()->rol === 'responsable')
+                <x-responsive-nav-link :href="route('clientes.clienteIndex')" :active="request()->routeIs('clientes.index')">
+                    {{ __('Clientes') }}
+                </x-responsive-nav-link>
 
-                        <x-responsive-nav-link :href="route('productos.productoIndex')" :active="request()->routeIs('productos.catalogo')">
-                            {{ __('Catálogo de Productos') }}
-                        </x-responsive-nav-link>
-                    @endif
+                <x-responsive-nav-link :href="route('productos.productoIndex')" :active="request()->routeIs('productos.catalogo')">
+                    {{ __('Catálogo de Productos') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('formatos.formatoProductoIndex')" :active="request()->routeIs('formatos.index')">
+                    {{ __('Formatos de producto') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('tickets.ticketIndex')" :active="request()->routeIs('tickets.ticketIndex')">
+                    {{ __('Tickets') }}
+                </x-responsive-nav-link>
+
+            @endif
+
+            @if (Auth::user()->rol === 'responsable')
+                <x-responsive-nav-link :href="route('estadisticas')" :active="request()->routeIs('estadisticas')">
+                    {{ __('Estadísticas') }}
+                </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->

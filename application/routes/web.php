@@ -22,8 +22,7 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\api;
 use App\Http\Controllers\FormatoProductoController;
 use App\Http\Controllers\TicketProductoController;
-
-
+use App\Http\Controllers\EstadisticasController;
 
 //Inicio
 Route::get('/', function () {
@@ -82,9 +81,7 @@ Route::middleware('auth')->group(function () {
 
 
     //Estadisticas
-    Route::get('/estadisticas', function () {
-        return view('estadisticas.estadisticas');
-    })->name('estadisticas');
+    Route::get('/estadisticas', [EstadisticasController::class, 'index'])->name('estadisticas');
 
 });
 
