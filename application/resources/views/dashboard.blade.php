@@ -30,7 +30,7 @@
                                     @foreach ($pedidos as $pedido)
                                         <tr>
                                             <td>{{ $pedido->id }}</td>
-                                            <td>{{ $pedido->idCliente }}</td>
+                                            <td>{{ $pedido->idCliente }} {{ $pedido->cliente->nombreCliente }} {{ $pedido->cliente->apellidoCliente }}</td>
                                             <td>{{ $pedido->fechaPedido }}</td>
                                             <td>{{ $pedido->direccionEnvio }}</td>
                                             <td>{{ $pedido->estadoPedido }}</td>
@@ -73,8 +73,8 @@
                                     @foreach ($pedidos as $pedido)
                                         <tr>
                                             <td>{{ $pedido->id }}</td>
-                                            <td>{{ $pedido->idCliente }}</td>
-                                            <td>{{ $pedido->Usuario }}</td>
+                                            <td>{{ $pedido->idCliente }} {{ $pedido->cliente->nombreCliente }} {{ $pedido->cliente->apellidoCliente }}</td>
+                                            <td>{{ $pedido->Usuario }} {{ $pedido->name }}</td>
                                             <td>{{ $pedido->fechaPedido }}</td>
                                             <td>{{ $pedido->direccionEnvio }}</td>
                                             <td>{{ $pedido->estadoPedido }}</td>

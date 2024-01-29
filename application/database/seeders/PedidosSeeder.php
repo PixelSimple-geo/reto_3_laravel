@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\Cliente;
 use App\Models\Pedido;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class PedidosSeeder extends Seeder
@@ -15,10 +14,12 @@ class PedidosSeeder extends Seeder
      */
     public function run(): void
     {
-        $cliente1 = Cliente::first();
-        $cliente2 = Cliente::find(2);
-        $user1 = User::first();
-        $user2 = User::find(2);
+        $cliente1 = Cliente::where('nombreCliente', 'John')->first();
+        $cliente2 = Cliente::where('nombreCliente', 'Jane')->first();
+        $cliente3 = Cliente::where('nombreCliente', 'Alice')->first();
+
+        $user1 = User::where('name', 'yalero')->first();
+        $user2 = User::where('name', 'jorge')->first();
 
         Pedido::create([
             'idCliente' => $cliente1->id,
@@ -37,8 +38,8 @@ class PedidosSeeder extends Seeder
         ]);
 
         Pedido::create([
-            'idCliente' => $cliente1->id,
-            'Usuario' => $user2->id,
+            'idCliente' => $cliente3->id,
+            'Usuario' => $user1->id,
             'fechaPedido' => now(),
             'direccionEnvio' => '789 Third St',
             'estadoPedido' => 'En entrega',

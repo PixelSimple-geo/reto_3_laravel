@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -13,16 +12,44 @@ class TicketsProductoSeeder extends Seeder
      */
     public function run(): void
     {
-        $numberOfRecords = 3;
+        DB::table('ticket_producto')->insert([
+            'idPedido' => 1,
+            'idFormatoProducto' => 1,
+            'unidades' => 5,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
 
-        for ($i = 1; $i <= $numberOfRecords; $i++) {
-            DB::table('ticket_producto')->insert([
-                'idPedido' => $i,
-                'idFormatoProducto' => $i,
-                'unidades' => rand(1, 10),
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
-        }
+        DB::table('ticket_producto')->insert([
+            'idPedido' => 2,
+            'idFormatoProducto' => 2,
+            'unidades' => 8,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('ticket_producto')->insert([
+            'idPedido' => 3,
+            'idFormatoProducto' => 3,
+            'unidades' => 3,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('ticket_producto')->insert([
+            'idPedido' => 2,
+            'idFormatoProducto' => 4,
+            'unidades' => 6,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('ticket_producto')->insert([
+            'idPedido' => 1,
+            'idFormatoProducto' => 4,
+            'unidades' => 7,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 }

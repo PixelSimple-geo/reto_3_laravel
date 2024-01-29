@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Categoria;
 use App\Models\Producto;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class ProductosSeeder extends Seeder
@@ -19,25 +18,31 @@ class ProductosSeeder extends Seeder
 
         Producto::create([
             'idCategoria' => $categoria2->id,
-            'nombreProducto' => 'Producto 1',
-            'descripcionProducto' => 'Descripción del producto 1',
-            'fotoURL' => 'https://images.unsplash.com/photo-1600788886242-5c96aabe3757?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            'nombreProducto' => 'Killer Lager',
+            'descripcionProducto' => 'Una cerveza Lager refrescante y fácil de beber, perfecta para cualquier ocasión.',
+            'fotoURL' => 'https://example.com/killer-lager.jpg',
         ]);
 
         Producto::create([
             'idCategoria' => $categoria2->id,
-            'nombreProducto' => 'Producto 2',
-            'descripcionProducto' => 'Descripción del producto 2',
-            'fotoURL' => 'https://images.unsplash.com/photo-1618183479302-1e0aa382c36b?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            'nombreProducto' => 'MegaKiller',
+            'descripcionProducto' => 'Una India Pale Ale intensamente lupulada y llena de sabor, con notas cítricas y afrutadas.',
+            'fotoURL' => 'https://example.com/megakiller-ipa.jpg',
         ]);
 
-        for ($i = 3; $i <= 10; $i++) {
-            Producto::create([
-                'idCategoria' => $categoria1->id,
-                'nombreProducto' => "Producto $i",
-                'descripcionProducto' => "Descripción del producto $i",
-                'fotoURL' => "https://images.unsplash.com/photo-1612528443702-f6741f70a049?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            ]);
-        }
+        Producto::create([
+            'idCategoria' => $categoria2->id,
+            'nombreProducto' => 'Killer00',
+            'descripcionProducto' => 'Una Pilsner clásica y equilibrada, con un ligero amargor y un final limpio y refrescante.',
+            'fotoURL' => 'https://example.com/killer00-pilsner.jpg',
+        ]);
+
+        Producto::create([
+            'idCategoria' => $categoria2->id,
+            'nombreProducto' => 'UltraKiller',
+            'descripcionProducto' => 'Una Stout rica y cremosa, con sabores a café y chocolate oscuro, perfecta para disfrutar junto a la chimenea en las noches frías.',
+            'fotoURL' => 'https://example.com/ultrakiller-stout.jpg',
+        ]);
+
     }
 }
