@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ticket_producto', function (Blueprint $table) {
-            $table->foreignId('idPedido')->constrained('pedidos')->onDelete("cascade");
-            $table->foreignId('idFormatoProducto')->constrained('formato_productos');
-            $table->integer('unidades');
-            $table->primary(['idPedido', 'idFormatoProducto']);
+        Schema::create('sesion_clientes', function (Blueprint $table) {
+            $table->uuid("token")->primary();
+            $table->foreignId("idCliente")->references("id")->on("clientes");
             $table->timestamps();
         });
     }
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ticket_producto');
+        Schema::dropIfExists('sesion_clientes');
     }
 };
