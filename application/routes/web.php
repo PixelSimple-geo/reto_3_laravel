@@ -89,7 +89,8 @@ Route::middleware('auth')->group(function () {
 });
 
 // Vue.js API
-Route::get("/api/productos",
-    [api\PedidoController::class, 'index']);
+Route::get("/api/productos", [api\PedidoController::class, 'index']);
+Route::post("/api/productos/store", [api\PedidoController::class, 'store']);
+Route::get("/api/crsf", [api\PedidoController::class, 'getCsrfToken']);
 
 require __DIR__.'/auth.php';
