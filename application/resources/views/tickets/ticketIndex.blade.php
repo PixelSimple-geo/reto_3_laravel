@@ -29,7 +29,7 @@
                                 @foreach ($tickets as $ticket)
                                     <tr>
                                         <td>{{ $ticket->idPedido }}</td>
-                                        <td>{{ $ticket->idFormatoProducto }}</td>
+                                        <td>{{ $ticket->idFormatoProducto }} {{ $ticket->formatoProducto->formatoEnvase }}</td>
                                         <td>{{ $ticket->unidades }}</td>
                                         <td>
                                             <a href="{{ route('tickets.ticketEdit', ['idPedido' => $ticket->idPedido, 'idFormatoProducto' => $ticket->idFormatoProducto]) }}" class="btn btn-primary">Editar</a>
