@@ -88,12 +88,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <div class="pagination-container">
-                                    <div class="pagination mt-4">
-                                        {{ $pedidos->links() }}
-                                    </div>
-                                </div>
-                            
+                                {{ $pedidos->links() }}
                             </div>
                             @endif
                         @else
