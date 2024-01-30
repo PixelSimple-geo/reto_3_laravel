@@ -10,10 +10,37 @@ use App\Models\Producto;
 
 class FormatoProductoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $formatosProductos = FormatoProducto::paginate(5);
-        return view('formatos.formatoProductoIndex', compact('formatosProductos'));
+        // Obtener los valores de búsqueda del formulario
+        $formato = $request->input('formato');
+        $unidades = $request->input('unidades');
+        $precioMin = $request->input('precio_min');
+        $precioMax = $request->input('precio_max');
+
+        // Construir la consulta para los formatos de producto
+        $query = FormatoProducto::query();
+
+        if ($formato) {
+            $query->where('formatoEnvase', $formato);
+        }
+
+        if ($unidades) {
+            $query->where('unidades', 'LIKE', "%$unidades%");
+        }
+
+        if ($precioMin && $precioMax) {
+            $query->whereBetween('precioUnitario', [$precioMin, $precioMax]);
+        }
+
+        // Obtener la lista de formatos de producto según los filtros aplicados
+        $formatosProductos = $query->paginate(10);
+
+        // Obtener las opciones únicas de formato para la select
+        $uniqueFormatos = FormatoProducto::distinct()->pluck('formatoEnvase');
+
+        // Retornar la vista con los formatos de producto y opciones únicas de formato
+        return view('formatos.formatoProductoIndex', compact('formatosProductos', 'uniqueFormatos'));
     }
 
     public function create()

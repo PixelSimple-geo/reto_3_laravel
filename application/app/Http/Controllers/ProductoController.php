@@ -10,10 +10,17 @@ use Illuminate\Support\Facades\Redirect;
 
 class ProductoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $productos = Producto::paginate(5);
-        return view("productos.productoIndex", compact('productos'));
+        $search = $request->input('search');
+
+        $productos = Producto::query()
+            ->where(function ($query) use ($search) {
+                $query->where('nombreProducto', 'LIKE', "%$search%");
+            })
+            ->paginate(5); 
+
+        return view('productos.productoIndex', compact('productos'));
     }
 
     public function create()

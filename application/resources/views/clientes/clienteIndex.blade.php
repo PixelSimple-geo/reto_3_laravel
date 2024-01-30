@@ -13,41 +13,55 @@
                     @include('parciales.success')
 
                     <h3 class="text-lg font-semibold mb-4">Lista de Clientes</h3>
-                    <a href="{{ route('clientes.clienteCreate') }}" class="btn btn-primary">Crear Cliente</a>
 
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>Email</th>
-                                <th>Modificar</th>
-                                <th>Eliminar</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($clientes as $cliente)
-                                <tr>
-                                    <td>{{ $cliente->id }}</td>
-                                    <td>{{ $cliente->nombreCliente }}</td>
-                                    <td>{{ $cliente->apellidoCliente }}</td>
-                                    <td>{{ $cliente->correoCliente }}</td>
-                                    <td>
-                                        <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-primary">Modificar</a>
-                                    </td>
-                                    <td>
-                                        <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger text-black" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">Eliminar</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    {{ $clientes->links() }}
+                    <form action="{{ route('clientes.clienteIndex') }}" method="GET" class="mb-4">
+                        <div class="flex items-center">
+                            <input type="text" name="search" placeholder="Buscar cliente..." class="form-input" autocomplete="off">
+                            <button type="submit" class="btn btn-primary ml-2 text-black    ">Buscar</button>
+                        </div>
+                    </form>
+
+                    <a href="{{ route('clientes.clienteCreate') }}" class="btn btn-primary">Crear Cliente</a>
+                    @if ($clientes->isEmpty())
+                        <p class="mt-4">No se encontraron resultados para los criterios de búsqueda especificados.</p>
+                    @else
+                        <div class="table-responsive mt-4">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Email</th>
+                                        <th>Modificar</th>
+                                        <th>Eliminar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($clientes as $cliente)
+                                        <tr>
+                                            <td>{{ $cliente->id }}</td>
+                                            <td>{{ $cliente->nombreCliente }}</td>
+                                            <td>{{ $cliente->apellidoCliente }}</td>
+                                            <td>{{ $cliente->correoCliente }}</td>
+                                            <td>
+                                                <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-primary">Modificar</a>
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger text-black" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">Eliminar</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        {{ $clientes->links() }}
+                    @endif
+                    </div>
                 </div>
             </div>
         </div>

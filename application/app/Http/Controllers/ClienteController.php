@@ -9,10 +9,18 @@ use Illuminate\Support\Facades\Redirect;
 
 class ClienteController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $clientes = Cliente::paginate(5);
-        return view("clientes.clienteIndex", compact('clientes'));
+        $search = $request->input('search');
+
+        $clientes = Cliente::query()
+            ->where(function ($query) use ($search) {
+                $query->where('nombreCliente', 'LIKE', "%$search%")
+                    ->orWhere('apellidoCliente', 'LIKE', "%$search%");
+            })
+            ->paginate(5); 
+
+        return view('clientes.clienteIndex', compact('clientes'));
     }
 
     public function create()

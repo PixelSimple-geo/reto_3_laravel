@@ -13,44 +13,78 @@
                     @include('parciales.success')
 
                     <h3 class="text-lg font-semibold mb-4">Lista de Formatos de Producto</h3>
+
+                    <form action="{{ route('formatos.formatoProductoIndex') }}" method="GET" class="mb-4">
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                <label for="formato">Formato:</label>
+                                <select name="formato" id="formato" class="form-select ml-2">
+                                    <option value="">Todos los formatos</option>
+                                    @foreach($uniqueFormatos as $option)
+                                        <option value="{{ $option }}">{{ $option }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <label for="unidades">Unidades:</label>
+                                <input type="text" name="unidades" id="unidades" placeholder="Buscar unidades..." class="form-control ml-2">
+                            </div>
+                            <div class="col-auto">
+                                <label for="precio_min">Precio Mínimo:</label>
+                                <input type="number" name="precio_min" id="precio_min" placeholder="Precio mínimo" class="form-control ml-2">
+                            </div>
+                            <div class="col-auto">
+                                <label for="precio_max">Precio Máximo:</label>
+                                <input type="number" name="precio_max" id="precio_max" placeholder="Precio máximo" class="form-control ml-2">
+                            </div>
+                            <div class="col-auto align-self-end">
+                                <button type="submit" class="btn btn-primary text-black">Buscar</button>
+                            </div>
+                        </div>
+                    </form>
+
                     <a href="{{ route('formatos.formatoProductoCreate') }}" class="btn btn-primary">Crear Formato de producto</a>
 
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>ID del Producto</th>
-                                    <th>Formato de Envase</th>
-                                    <th>Unidades</th>
-                                    <th>Precio Unitario</th>
-                                    <th>Modificar</th>
-                                    <th>Eliminar</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($formatosProductos as $formato)
+                    <div class="table-responsive mt-4">
+                        @if ($formatosProductos->isEmpty())
+                            <p>No se encontraron resultados para los criterios de búsqueda especificados.</p>
+                        @else
+                            <table class="table table-striped">
+                                <thead>
                                     <tr>
-                                        <td>{{ $formato->id }}</td>
-                                        <td>{{ $formato->idProducto }}</td>
-                                        <td>{{ $formato->formatoEnvase }}</td>
-                                        <td>{{ $formato->unidades }}</td>
-                                        <td>{{ $formato->precioUnitario }}</td>
-                                        <td>
-                                            <a href="{{ route('formatos.formatoProductoEdit', $formato->id) }}" class="btn btn-primary">Modificar</a>
-                                        </td>
-                                        <td>
-                                            <form action="{{ route('formatoProductos.destroy', $formato->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger text-black" onclick="return confirm('¿Estás seguro de que deseas eliminar este formato de producto?')">Eliminar</button>
-                                            </form>
-                                        </td>
+                                        <th>ID</th>
+                                        <th>ID del Producto</th>
+                                        <th>Formato de Envase</th>
+                                        <th>Unidades</th>
+                                        <th>Precio Unitario</th>
+                                        <th>Modificar</th>
+                                        <th>Eliminar</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        {{ $formatosProductos->links() }}
+                                </thead>
+                                <tbody>
+                                    @foreach ($formatosProductos as $formato)
+                                        <tr>
+                                            <td>{{ $formato->id }}</td>
+                                            <td>{{ $formato->idProducto }}</td>
+                                            <td>{{ $formato->formatoEnvase }}</td>
+                                            <td>{{ $formato->unidades }}</td>
+                                            <td>{{ $formato->precioUnitario }}</td>
+                                            <td>
+                                                <a href="{{ route('formatos.formatoProductoEdit', $formato->id) }}" class="btn btn-primary">Modificar</a>
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('formatoProductos.destroy', $formato->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger text-black" onclick="return confirm('¿Estás seguro de que deseas eliminar este formato de producto?')">Eliminar</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            {{ $formatosProductos->links() }}
+                        @endif
                     </div>
                 </div>
             </div>
