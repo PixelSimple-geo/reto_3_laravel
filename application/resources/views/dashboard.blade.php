@@ -9,47 +9,46 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                <div class="container mt-4">
-                    <div class="row">
-                        <h3 class="text-lg font-semibold mb-4">Lista de Pedidos</h3>
-                        <form action="{{ route('dashboard') }}" method="GET" class="row g-3 align-items-center">
-                            <div class="col-md-3 mb-2">
-                                <label for="cliente" class="form-label">Cliente:</label>
-                                <select name="cliente" id="cliente" class="form-select">
-                                    <option value="">Todos los clientes</option>
-                                    @foreach ($clientes as $cliente)
-                                        <option value="{{ $cliente->id }}" {{ request('cliente') == $cliente->id ? 'selected' : '' }}>
-                                            {{ $cliente->nombreCliente }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="col-md-2 mb-2">
-                                <label for="fecha_inicio" class="form-label">Fecha de inicio:</label>
-                                <input type="date" name="fecha_inicio" id="fecha_inicio" class="form-control" value="{{ request('fecha_inicio') }}">
-                            </div>
-                            <div class="col-md-2 mb-2">
-                                <label for="fecha_fin" class="form-label">Fecha de fin:</label>
-                                <input type="date" name="fecha_fin" id="fecha_fin" class="form-control" value="{{ request('fecha_fin') }}">
-                            </div>
-                            <div class="col-md-2 mb-2">
-                                <label for="estado" class="form-label">Estado:</label>
-                                <select name="estado" id="estado" class="form-select">
-                                    <option value="">Todos los estados</option>
-                                    <option value="Solicitado" {{ request('estado') == 'Solicitado' ? 'selected' : '' }}>Solicitado</option>
-                                    <option value="En preparación" {{ request('estado') == 'En preparación' ? 'selected' : '' }}>En preparación</option>
-                                    <option value="En entrega" {{ request('estado') == 'En entrega' ? 'selected' : '' }}>En entrega</option>
-                                    <option value="Entregado" {{ request('estado') == 'Entregado' ? 'selected' : '' }}>Entregado</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3 mb-2 d-flex align-self-end">
-                                <button type="submit" class="btn btn-primary text-black">Filtrar</button>
-                                <button type="reset" class="btn btn-secondary ms-2 text-black">Resetear</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                    @if (auth()->check())
+                    <div class="container mt-4">
+                        <div>
+                            <h3 class="text-lg font-semibold mb-4">Lista de Pedidos</h3>
+                            <form action="{{ route('dashboard') }}" method="GET" class="row g-3 align-items-center">
+                                <div class="col-md-3 mb-2">
+                                    <label for="cliente" class="form-label">Cliente:</label>
+                                    <select name="cliente" id="cliente" class="form-select">
+                                        <option value="">Todos los clientes</option>
+                                        @foreach ($clientes as $cliente)
+                                            <option value="{{ $cliente->id }}" {{ request('cliente') == $cliente->id ? 'selected' : '' }}>
+                                                {{ $cliente->nombreCliente }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-2 mb-2">
+                                    <label for="fecha_inicio" class="form-label">Fecha de inicio:</label>
+                                    <input type="date" name="fecha_inicio" id="fecha_inicio" class="form-control" value="{{ request('fecha_inicio') }}">
+                                </div>
+                                <div class="col-md-2 mb-2">
+                                    <label for="fecha_fin" class="form-label">Fecha de fin:</label>
+                                    <input type="date" name="fecha_fin" id="fecha_fin" class="form-control" value="{{ request('fecha_fin') }}">
+                                </div>
+                                <div class="col-md-2 mb-2">
+                                    <label for="estado" class="form-label">Estado:</label>
+                                    <select name="estado" id="estado" class="form-select">
+                                        <option value="">Todos los estados</option>
+                                        <option value="Solicitado" {{ request('estado') == 'Solicitado' ? 'selected' : '' }}>Solicitado</option>
+                                        <option value="En preparación" {{ request('estado') == 'En preparación' ? 'selected' : '' }}>En preparación</option>
+                                        <option value="En entrega" {{ request('estado') == 'En entrega' ? 'selected' : '' }}>En entrega</option>
+                                        <option value="Entregado" {{ request('estado') == 'Entregado' ? 'selected' : '' }}>Entregado</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3 mb-2 d-flex align-self-end">
+                                    <button type="submit" class="btn btn-primary text-black">Filtrar</button>
+                                    <button type="reset" class="btn btn-secondary ms-2 text-black">Resetear</button>
+                                </div>
+                            </form>
+                        </div>
+                        @if (auth()->check())
                         <a href="{{ route('pedidos.pedidoCreate') }}" class="btn btn-primary">Crear Pedido</a>
                         @if ($pedidos->isEmpty())
                             <p>No hay resultados para sus criterios de búsqueda.</p>
@@ -95,6 +94,7 @@
                         @else
                             <p>No tienes permiso para ver esta información.</p>
                         @endif
+                    </div>
                 </div>
             </div>
         </div>
