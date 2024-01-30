@@ -16,14 +16,18 @@ class ProductoController extends Controller
 
         $productos = Producto::query()
             ->where(function ($query) use ($search) {
-                $query->where('nombreProducto', 'LIKE', "%$search%");
+                $query->where('nombreProducto', 'LIKE', "%$search%")
+                    ->orWhereHas('categoria', function ($query) use ($search) {
+                        $query->where('nombreCategoria', 'LIKE', "%$search%");
+                    });
             })
-            ->paginate(5); 
+            ->paginate(5);
 
-            $productos->appends(['search' => $search]);
+        $productos->appends(['search' => $search]);
 
         return view('productos.productoIndex', compact('productos'));
     }
+
 
     public function create()
     {

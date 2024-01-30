@@ -27,7 +27,7 @@
                             <select name="idFormatoProducto" id="idFormatoProducto" class="form-select mt-1 block w-full" required>
                                 <option value="" disabled selected>Selecciona un Formato de Producto</option>
                                 @foreach($formatosProducto as $formatoProducto)
-                                    <option value="{{ $formatoProducto->id }}">{{ $formatoProducto->id }}</option>
+                                <option value="{{ $formatoProducto->id }}">{{ $formatoProducto->id }} | {{ $formatoProducto->producto->nombreProducto }} - {{ $formatoProducto->formatoEnvase }}</option>
                                 @endforeach
                             </select>
                         </div>

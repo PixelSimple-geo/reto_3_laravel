@@ -65,7 +65,7 @@
                                     @foreach ($formatosProductos as $formato)
                                         <tr>
                                             <td>{{ $formato->id }}</td>
-                                            <td>{{ $formato->idProducto }}</td>
+                                            <td>{{ $formato->idProducto }} | {{ $formato->producto->nombreProducto }}</td>
                                             <td>{{ $formato->formatoEnvase }}</td>
                                             <td>{{ $formato->unidades }}</td>
                                             <td>{{ $formato->precioUnitario }}</td>
