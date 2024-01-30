@@ -20,6 +20,8 @@ class ProductoController extends Controller
             })
             ->paginate(5); 
 
+            $productos->appends(['search' => $search]);
+
         return view('productos.productoIndex', compact('productos'));
     }
 

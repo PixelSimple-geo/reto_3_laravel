@@ -12,13 +12,11 @@ class FormatoProductoController extends Controller
 {
     public function index(Request $request)
     {
-        // Obtener los valores de búsqueda del formulario
         $formato = $request->input('formato');
         $unidades = $request->input('unidades');
         $precioMin = $request->input('precio_min');
         $precioMax = $request->input('precio_max');
 
-        // Construir la consulta para los formatos de producto
         $query = FormatoProducto::query();
 
         if ($formato) {
@@ -33,13 +31,12 @@ class FormatoProductoController extends Controller
             $query->whereBetween('precioUnitario', [$precioMin, $precioMax]);
         }
 
-        // Obtener la lista de formatos de producto según los filtros aplicados
-        $formatosProductos = $query->paginate(10);
+        $formatosProductos = $query->paginate(5);
 
-        // Obtener las opciones únicas de formato para la select
+        $formatosProductos->appends($request->only(['formato', 'unidades', 'precio_min', 'precio_max']));
+
         $uniqueFormatos = FormatoProducto::distinct()->pluck('formatoEnvase');
 
-        // Retornar la vista con los formatos de producto y opciones únicas de formato
         return view('formatos.formatoProductoIndex', compact('formatosProductos', 'uniqueFormatos'));
     }
 

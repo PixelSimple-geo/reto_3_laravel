@@ -19,6 +19,7 @@ class ClienteController extends Controller
                     ->orWhere('apellidoCliente', 'LIKE', "%$search%");
             })
             ->paginate(5); 
+            $clientes->appends(['search' => $search]);
 
         return view('clientes.clienteIndex', compact('clientes'));
     }
