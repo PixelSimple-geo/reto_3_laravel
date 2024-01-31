@@ -56,7 +56,7 @@ class EstadisticasController extends Controller
             ->setTitle('Ganancias Mensuales')
             ->setXAxis($labels2)
             ->addData('Ganancias', $totalPorMes)
-            ->setColors(['#FF5733']);
+            ->setColors(['#334FFF']);
 
         return view('estadisticas.estadisticas', compact('chart', 'chart2'));
     }
