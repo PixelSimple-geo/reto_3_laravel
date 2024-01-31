@@ -12,6 +12,9 @@
                     <div class="container mt-4">
                         <div>
                             <h3 class="text-lg font-semibold mb-4">Lista de Pedidos</h3>
+                            
+                            @include('parciales.success')
+
                             <form action="{{ route('dashboard') }}" method="GET" class="row g-3 align-items-center">
                                 <div class="col-md-3 mb-2">
                                     <label for="cliente" class="form-label">Cliente:</label>
@@ -53,6 +56,7 @@
                         @if ($pedidos->isEmpty())
                             <p>No hay resultados para sus criterios de búsqueda.</p>
                         @else
+                        {{ $pedidos->links() }}
                             <div class="table-responsive">
                                 <table class="table table-striped">
                                     <thead>
@@ -88,7 +92,6 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                {{ $pedidos->links() }}
                             </div>
                             @endif
                         @else

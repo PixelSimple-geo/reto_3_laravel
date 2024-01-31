@@ -24,77 +24,77 @@ class ProductosSeeder extends Seeder
             'idCategoria' => $categoria4->id,
             'nombreProducto' => 'Killer Lager',
             'descripcionProducto' => 'Una cerveza Lager refrescante y fácil de beber, perfecta para cualquier ocasión.',
-            'fotoURL' => 'https://example.com/killer-lager.jpg',
+            'fotoURL' => 'imagenes/AleKrGC5UAPQN4MUdCwKWKGqZfbmWOaN4htd4ysO.jpg',
         ]);
 
         Producto::create([
             'idCategoria' => $categoria2->id,
             'nombreProducto' => 'MegaKiller',
             'descripcionProducto' => 'Una India Pale Ale intensamente lupulada y llena de sabor, con notas cítricas y afrutadas.',
-            'fotoURL' => 'https://example.com/megakiller-ipa.jpg',
+            'fotoURL' => 'imagenes/mcaNu2tAaze6kOi9Lg54CUFjKrWeOk0tLSBLlkPA.jpg',
         ]);
 
         Producto::create([
             'idCategoria' => $categoria2->id,
             'nombreProducto' => 'Killer00',
             'descripcionProducto' => 'Una Pilsner clásica y equilibrada, con un ligero amargor y un final limpio y refrescante.',
-            'fotoURL' => 'https://example.com/killer00-pilsner.jpg',
+            'fotoURL' => 'imagenes/rWxH0Rf5Lx9oYIGzDqP9AHcQBb1rh4ZXnuoNv1ih.jpg',
         ]);
 
         Producto::create([
             'idCategoria' => $categoria3->id,
             'nombreProducto' => 'UltraKiller',
             'descripcionProducto' => 'Una Stout rica y cremosa, con sabores a café y chocolate oscuro, perfecta para disfrutar junto a la chimenea en las noches frías.',
-            'fotoURL' => 'https://example.com/ultrakiller-stout.jpg',
+            'fotoURL' => 'imagenes/KA8GU1n9Om9MbZsGnoxwlhmQ0QXFqTxLyfvGGuN5.jpg',
         ]);
 
         Producto::create([
             'idCategoria' => $categoria1->id,
             'nombreProducto' => 'Golden Ale',
             'descripcionProducto' => 'Una cerveza dorada y refrescante, con un equilibrio perfecto entre maltas y lúpulos.',
-            'fotoURL' => 'https://example.com/golden-ale.jpg',
+            'fotoURL' => 'imagenes/GEORGPUHa3KMajHEKuCZ8Vi8vhJRoeVtnhVFpvIO.jpg',
         ]);
         
         Producto::create([
             'idCategoria' => $categoria3->id,
             'nombreProducto' => 'Amber Lager',
             'descripcionProducto' => 'Una cerveza de color ámbar con un sabor suave y tostado, ideal para maridar con comidas ligeras.',
-            'fotoURL' => 'https://example.com/amber-lager.jpg',
+            'fotoURL' => 'imagenes/erNyLji9QvZU43p4CtpMmARqvrBj6PXOZyjFO3JL.jpg',
         ]);
         
         Producto::create([
             'idCategoria' => $categoria4->id,
             'nombreProducto' => 'Double IPA',
             'descripcionProducto' => 'Una India Pale Ale con un doble golpe de lúpulo, perfecta para los amantes de los sabores intensos.',
-            'fotoURL' => 'https://example.com/double-ipa.jpg',
+            'fotoURL' => 'imagenes/XeoILzyYbTXOqqscXi1cadSPK1v4663LtKGRfPs4.jpg',
         ]);
         
         Producto::create([
             'idCategoria' => $categoria5->id,
             'nombreProducto' => 'Wheat Ale',
             'descripcionProducto' => 'Una cerveza de trigo ligera y refrescante, con notas especiadas y un toque cítrico.',
-            'fotoURL' => 'https://example.com/wheat-ale.jpg',
+            'fotoURL' => 'imagenes/OP0r5t7mP2Mq9IW9MyudjtfIFqeKKrsNsfW5KEOS.jpg',
         ]);
         
         Producto::create([
             'idCategoria' => $categoria6->id,
             'nombreProducto' => 'Sparkling Water',
             'descripcionProducto' => 'Un agua mineral burbujeante y cristalina, perfecta para saciar la sed en cualquier momento del día.',
-            'fotoURL' => 'https://example.com/sparkling-water.jpg',
+            'fotoURL' => 'imagenes/ybkeOa0x8riRWLoOZOWTS6DQ0vbBiW95wUjLA6In.jpg',
         ]);
         
         Producto::create([
             'idCategoria' => $categoria1->id,
             'nombreProducto' => 'Blonde Ale',
             'descripcionProducto' => 'Una cerveza ale rubia con un cuerpo ligero y un sabor suave, perfecta para disfrutar en días soleados.',
-            'fotoURL' => 'https://example.com/blonde-ale.jpg',
+            'fotoURL' => 'imagenes/AuEple7YuKa83yNs8GXFx6xId9GYroXgnBVhSNhF.jpg',
         ]);
         
         Producto::create([
             'idCategoria' => $categoria2->id,
             'nombreProducto' => 'Porter Oscuro',
             'descripcionProducto' => 'Una cerveza porter oscura y robusta, con sabores a café, chocolate y notas tostadas.',
-            'fotoURL' => 'https://example.com/dark-porter.jpg',
+            'fotoURL' => 'imagenes/wQxjdcDkk7IFpHonJ9Fiqv567bugaXvb28YXchaS.jpg',
         ]);        
     }
 }

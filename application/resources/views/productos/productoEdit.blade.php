@@ -18,12 +18,13 @@
                         <div class="mb-4">
                             <label for="categoria_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Categoría:</label>
                             <select name="idCategoria" id="categoria_id" class="form-select mt-1 block w-full">
-                                <option value="" disabled selected>Selecciona una categoría</option>
+                                <option value="" disabled>Selecciona una categoría</option>
                                 @foreach($categorias as $categoria)
-                                    <option value="{{ $categoria->id }}">{{ $categoria->nombreCategoria }}</option>
+                                    <option value="{{ $categoria->id }}" @if($categoria->id == $producto->idCategoria) selected @endif>{{ $categoria->nombreCategoria }}</option>
                                 @endforeach
                             </select>
                         </div>
+
 
                         <!-- Nombre -->
                         <div class="mb-4">
@@ -37,17 +38,21 @@
                             <textarea name="descripcionProducto" id="descripcion" class="form-textarea mt-1 block w-full" rows="3" required>{{ $producto->descripcionProducto    }}</textarea>
                         </div>
 
-                        <!-- Imagen -->
-                        <div class="mb-4">
-                            @if ($producto->fotoURL)
-                                <a href="{{ $producto->fotoURL }}" target="_blank" class="btn btn-primary btn-sm mt-2">Ver imagen</a>
-                            @else
-                                <span class="block mt-2 text-gray-500 dark:text-gray-400">No hay imagen disponible</span>
-                            @endif
-                            <label for="imagen" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Imagen:</label>
-                            <input type="url" name="fotoURL" id="imagen" class="form-input mt-1 block w-full" placeholder="Insertar URL de la imagen" value="{{ $producto->fotoURL }}">
-            
-                        </div>
+                        <!-- Imagen actual -->
+                        @if ($producto->fotoURL)
+                            <img src="{{ asset('/storage/' . $producto->fotoURL) }}" alt="Imagen actual del producto" style="max-width: 300px; height: auto;">
+                        @else
+                            <span class="block mt-2 text-gray-500 dark:text-gray-400">No hay imagen disponible</span>
+                        @endif
+
+                        <!-- Campo de carga de nueva imagen -->
+                        <label for="imagen" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mt-4">Nueva imagen:</label>
+                        <input type="file" name="imagen" id="imagen" class="form-input mt-1 block w-full" accept="image/*">
+
+                        <br>
+
+                        <!-- Campo oculto para mantener la imagen actual si no se proporciona una nueva -->
+                        <input type="hidden" name="imagen_actual" value="{{ $producto->fotoURL }}"> 
 
                         <!-- Botones de acción -->
                         <div class="form-group d-flex justify-content-between">

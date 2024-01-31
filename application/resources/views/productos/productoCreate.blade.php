@@ -39,8 +39,8 @@
                         <!-- Imagen -->
                         <div class="mb-4">
                             <label for="imagen" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Imagen:</label>
-                            <input type="url" name="fotoURL" id="imagen" class="form-input mt-1 block w-full" placeholder="Insertar URL de la imagen">
-                        </div>                        
+                            <input type="file" name="imagen" id="imagen" class="form-input mt-1 block w-full" accept="image/*" required>
+                        </div>                       
 
                         <!-- Botones de acción -->
                         <div class="form-group d-flex justify-content-between">

@@ -16,8 +16,9 @@ class FormatoProductoController extends Controller
         $unidades = $request->input('unidades');
         $precioMin = $request->input('precio_min');
         $precioMax = $request->input('precio_max');
+        $nombreProducto = $request->input('nombre_producto');
 
-        $query = FormatoProducto::query();
+        $query = FormatoProducto::query()->with('producto');
 
         if ($formato) {
             $query->where('formatoEnvase', $formato);
@@ -31,9 +32,15 @@ class FormatoProductoController extends Controller
             $query->whereBetween('precioUnitario', [$precioMin, $precioMax]);
         }
 
+        if ($nombreProducto) {
+            $query->whereHas('producto', function ($query) use ($nombreProducto) {
+                $query->where('nombreProducto', 'LIKE', "%$nombreProducto%");
+            });
+        }
+
         $formatosProductos = $query->paginate(5);
 
-        $formatosProductos->appends($request->only(['formato', 'unidades', 'precio_min', 'precio_max']));
+        $formatosProductos->appends($request->only(['formato', 'unidades', 'precio_min', 'precio_max', 'nombre_producto']));
 
         $uniqueFormatos = FormatoProducto::distinct()->pluck('formatoEnvase');
 

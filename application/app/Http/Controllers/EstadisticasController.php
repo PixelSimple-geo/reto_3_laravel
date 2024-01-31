@@ -18,7 +18,7 @@ class EstadisticasController extends Controller
         $labels = [];
 
         foreach ($formatos as $formato) {
-            $idFormato = $formato->id;
+            $idFormato = $formato->id;  
             $cantidadTotalPorFormato[] = TicketProducto::where('idFormatoProducto', $idFormato)->sum('unidades');
 
             $productoFormato = $formato->producto->nombreProducto . ' ' . $formato->formatoEnvase;

@@ -25,7 +25,7 @@
                     @if ($productos->isEmpty())
                         <p class="mt-4">No se encontraron resultados para los criterios de búsqueda especificados.</p>
                     @else
-
+                    {{ $productos->links() }}
                         <div class="table-responsive mt-4">
                             <table class="table table-striped">
                                 <thead>
@@ -41,33 +41,28 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($productos as $producto)
-                                        <tr>
-                                            <td>{{ $producto->id }}</td>
-                                            <td>{{ $producto->categoria->nombreCategoria }}</td>
-                                            <td>{{ $producto->nombreProducto }}</td>
-                                            <td>{{ $producto->descripcionProducto }}</td>
-                                            <td>
-                                                @if ($producto->fotoURL)
-                                                    <a href="{{ $producto->fotoURL }}" target="_blank" class="btn btn-primary">Ver</a>
-                                                @else
-                                                    No hay imagen disponible
-                                                @endif
-                                            </td>
-                                            <td>
-                                                    <a href="{{ route('productos.productoEdit', $producto->id) }}" class="btn btn-primary">Modificar</a>
-                                                </td>
-                                                <td>
-                                                    <form action="{{ route('productos.destroy', $producto->id) }}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger text-black" onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?')">Eliminar</button>
-                                                    </form>
-                                                </td>
-                                        </tr>
+                                    <tr>
+                                        <td>{{ $producto->id }}</td>
+                                        <td>{{ $producto->categoria->nombreCategoria }}</td>
+                                        <td>{{ $producto->nombreProducto }}</td>
+                                        <td>{{ $producto->descripcionProducto }}</td>
+                                        <td>
+                                            <a href="{{ asset('/storage/' . $producto->fotoURL) }}" target="_blank"><img src="{{ asset('/storage/' . $producto->fotoURL) }}" alt="Imagen del producto" style="max-width: 3rem; max-height: 3rem;"></a> 
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('productos.productoEdit', $producto->id) }}" class="btn btn-primary">Modificar</a>
+                                        </td>
+                                        <td>
+                                            <form action="{{ route('productos.destroy', $producto->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger text-black" onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?')">Eliminar</button>
+                                            </form>
+                                        </td>
+                                    </tr>
                                     @endforeach
                                 </tbody>
                             </table>
-                            {{ $productos->links() }}
                         </div>
                     @endif
                 </div>

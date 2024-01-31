@@ -25,6 +25,7 @@
                     @if ($clientes->isEmpty())
                         <p class="mt-4">No se encontraron resultados para los criterios de búsqueda especificados.</p>
                     @else
+                    {{ $clientes->links() }}
                         <div class="table-responsive mt-4">
                             <table class="table table-striped">
                                 <thead>
@@ -59,9 +60,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        {{ $clientes->links() }}
                     @endif
-                    </div>
                 </div>
             </div>
         </div>

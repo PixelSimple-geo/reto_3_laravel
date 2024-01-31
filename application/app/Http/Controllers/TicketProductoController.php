@@ -13,12 +13,32 @@ use App\Models\FormatoProducto;
 
 class TicketProductoController extends Controller
 {
-    public function index()
+    
+    public function index(Request $request)
     {
-        $tickets = TicketProducto::with('formatoProducto')->paginate(5); 
-        return view('tickets.ticketIndex', compact('tickets'));
-    }
+        $producto = $request->input('producto');
+        $formato = $request->input('formato');
 
+        $query = TicketProducto::with('formatoProducto');
+
+        if ($producto) {
+            $query->whereHas('formatoProducto.producto', function ($q) use ($producto) {
+                $q->where('nombreProducto', 'like', '%' . $producto . '%');
+            });
+        }
+
+        if ($formato) {
+            $query->whereHas('formatoProducto', function ($q) use ($formato) {
+                $q->where('formatoEnvase', $formato);
+            });
+        }
+
+        $tickets = $query->paginate(5);
+        $uniqueFormatos = FormatoProducto::distinct()->pluck('formatoEnvase');
+
+        return view('tickets.ticketIndex', compact('tickets', 'uniqueFormatos'));
+    }
+    
     public function create()
     {
         $pedidos = Pedido::all(); 

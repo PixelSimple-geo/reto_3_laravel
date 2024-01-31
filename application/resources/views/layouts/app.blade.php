@@ -16,9 +16,16 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <style>
+            #template {
+                display: grid;
+                grid-template-rows: auto auto 1fr auto;
+                min-height: 100vh;
+            }
+        </style>
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <body class="font-sans antialiased ">
+        <div class="bg-gray-100 dark:bg-gray-900" id=template>
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -34,6 +41,12 @@
             <main>
                 {{ $slot }}
             </main>
+
+            <footer class="bg-gray-200 dark:bg-gray-900 py-4 text-center">
+                <p class="text-sm text-gray-600 dark:text-gray-400">© {{ date('Y') }} PixelSimple.geo. Todos los derechos reservados.</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Teléfono de contacto: +420666922</p>
+            </footer>   
+
         </div>
     </body>
 </html>

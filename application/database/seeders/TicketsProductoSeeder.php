@@ -15,7 +15,7 @@ class TicketsProductoSeeder extends Seeder
         DB::table('ticket_producto')->insert([
             'idPedido' => 1,
             'idFormatoProducto' => 1,
-            'unidades' => 5,
+            'unidades' => 6,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -23,7 +23,7 @@ class TicketsProductoSeeder extends Seeder
         DB::table('ticket_producto')->insert([
             'idPedido' => 2,
             'idFormatoProducto' => 2,
-            'unidades' => 8,
+            'unidades' => 3,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -31,7 +31,7 @@ class TicketsProductoSeeder extends Seeder
         DB::table('ticket_producto')->insert([
             'idPedido' => 3,
             'idFormatoProducto' => 3,
-            'unidades' => 3,
+            'unidades' => 7,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -95,7 +95,7 @@ class TicketsProductoSeeder extends Seeder
         DB::table('ticket_producto')->insert([
             'idPedido' => 9,
             'idFormatoProducto' => 10,
-            'unidades' => 10,
+            'unidades' => 1,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -151,7 +151,7 @@ class TicketsProductoSeeder extends Seeder
         DB::table('ticket_producto')->insert([
             'idPedido' => 16,
             'idFormatoProducto' => 7,
-            'unidades' => 10,
+            'unidades' => 1,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -175,7 +175,7 @@ class TicketsProductoSeeder extends Seeder
         DB::table('ticket_producto')->insert([
             'idPedido' => 19,
             'idFormatoProducto' => 10,
-            'unidades' => 7,
+            'unidades' => 3,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -211,6 +211,53 @@ class TicketsProductoSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-        
+
+        DB::table('ticket_producto')->insert([
+            'idPedido' => 5,
+            'idFormatoProducto' => 16,
+            'unidades' => 11,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('ticket_producto')->insert([
+            'idPedido' => 7,
+            'idFormatoProducto' => 15,
+            'unidades' => 21,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('ticket_producto')->insert([
+            'idPedido' => 9,
+            'idFormatoProducto' => 17,
+            'unidades' => 13,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('ticket_producto')->insert([
+            'idPedido' => 9,
+            'idFormatoProducto' => 18,
+            'unidades' => 10,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('ticket_producto')->insert([
+            'idPedido' => 3,
+            'idFormatoProducto' => 18,
+            'unidades' => 12,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('ticket_producto')->insert([
+            'idPedido' => 6,
+            'idFormatoProducto' => 19,
+            'unidades' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 }

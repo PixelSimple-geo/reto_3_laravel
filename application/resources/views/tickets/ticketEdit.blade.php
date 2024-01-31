@@ -31,7 +31,7 @@
 
                         <div class="mb-4">
                             <label for="unidades" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Unidades:</label>
-                            <input type="number" name="unidades" id="unidades" class="form-input mt-1 block w-full" value="{{ $ticket->unidades }}" required>
+                            <input type="number" name="unidades" id="unidades" class="form-input mt-1 block w-full" value="{{ $ticket->unidades }}" min="1" required>
                         </div>
 
                         <!-- Botones de acción -->

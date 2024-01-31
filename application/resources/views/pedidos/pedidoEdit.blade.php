@@ -19,10 +19,11 @@
                             <label for="cliente" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Cliente:</label>
                             <select name="idCliente" id="cliente" class="form-select mt-1 block w-full">
                                 @foreach($clientes as $cliente)
-                                    <option value="{{ $cliente->id }}" {{ $cliente->id == $pedido->idCliente ? 'selected' : '' }}>{{ $cliente->nombreCliente }}</option>
+                                    <option value="{{ $cliente->id }}" {{ $cliente->id == $pedido->idCliente ? 'selected' : '' }}>{{ $cliente->nombreCliente }} {{ $cliente->apellidoCliente }}</option>
                                 @endforeach
                             </select>
                         </div>
+
 
                         <!-- Fecha -->
                         <div class="mb-4">

@@ -12,12 +12,12 @@
                     <form action="{{ route('tickets.ticketStore') }}" method="POST">
                         @csrf
 
-                       <div class="mb-4">
-                            <label for="idPedido" class="block text-sm font-medium text-gray-700 dark:text-gray-300">ID Pedido:</label>
+                        <div class="mb-4">
+                            <label for="idPedido" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Pedido:</label>
                             <select name="idPedido" id="idPedido" class="form-select mt-1 block w-full" required>
                                 <option value="" disabled selected>Selecciona un Pedido</option>
                                 @foreach($pedidos as $pedido)
-                                    <option value="{{ $pedido->id }}">{{ $pedido->id }}</option>
+                                    <option value="{{ $pedido->id }}">{{ $pedido->id }} - {{ $pedido->cliente->nombreCliente }} {{ $pedido->cliente->apellidoCliente }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -27,24 +27,21 @@
                             <select name="idFormatoProducto" id="idFormatoProducto" class="form-select mt-1 block w-full" required>
                                 <option value="" disabled selected>Selecciona un Formato de Producto</option>
                                 @foreach($formatosProducto as $formatoProducto)
-                                <option value="{{ $formatoProducto->id }}">{{ $formatoProducto->id }} | {{ $formatoProducto->producto->nombreProducto }} - {{ $formatoProducto->formatoEnvase }}</option>
+                                <option value="{{ $formatoProducto->id }}">{{ $formatoProducto->id }} - {{ $formatoProducto->producto->nombreProducto }} - {{ $formatoProducto->formatoEnvase }}</option>
                                 @endforeach
                             </select>
                         </div>
 
                         <div class="mb-4">
                             <label for="unidades" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Unidades:</label>
-                            <input type="number" name="unidades" id="unidades" class="form-input mt-1 block w-full" required>
+                            <input type="number" name="unidades" id="unidades" class="form-input mt-1 block w-full" min="1" required>
                         </div>
 
-                        <!-- Botones de acción -->
                         <div class="form-group d-flex justify-content-between">
-                            <!-- Botón de envío -->
                             <div class="form-group mb-4">
                                 <button type="submit" class="btn btn-primary text-black">{{ __('Crear Ticket') }}</button>
                             </div>
 
-                            <!-- Botón para volver -->
                             <div class="form-group">
                                 <a href="{{ route('tickets.ticketIndex') }}" class="btn btn-secondary">{{ __('Volver') }}</a>
                             </div>
