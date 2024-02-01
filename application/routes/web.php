@@ -19,7 +19,6 @@ use App\Http\Controllers\TableroController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProductoController;
-use App\Http\Controllers\api;
 use App\Http\Controllers\FormatoProductoController;
 use App\Http\Controllers\TicketProductoController;
 
@@ -88,12 +87,5 @@ Route::middleware('auth')->group(function () {
 
 });
 
-// Vue.js API
-Route::get("/api/pedidos", [api\PedidoController::class, 'index']);
-Route::post("/api/pedidos/store", [api\PedidoController::class, 'store']);
-Route::delete("/api/pedidos/{id}", [api\PedidoController::class, "destroy"]);
-
-Route::get("/api/productos", [api\ProductoController::class, 'index']);
-Route::post("/api/sesion", [api\SesionClienteController::class, 'store']);
 
 require __DIR__.'/auth.php';

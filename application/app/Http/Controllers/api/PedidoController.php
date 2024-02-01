@@ -9,17 +9,19 @@ use Illuminate\Http\Request;
 
 class PedidoController extends Controller
 {
-    public function index()
+    public function index($idCliente)
     {
-        $pedidos = Pedido::with(['ticketProductos', 'ticketProductos.formatoProducto',
-            'ticketProductos.formatoProducto.producto', 'ticketProductos.formatoProducto.producto.categoria'])->get();
-        return response()->json(['pedidos' => $pedidos]);
+        $pedidos = Pedido::where('idCliente', $idCliente)
+            ->with(['ticketProductos', 'ticketProductos.formatoProducto',
+                'ticketProductos.formatoProducto.producto', 'ticketProductos.formatoProducto.producto.categoria'])
+            ->get();
+        return response()->json($pedidos);
     }
 
     public function store(Request $request)
     {
-        $pedidoData = $request->only(['direccionEnvio']);
-        $pedidoData['idCliente'] = 1;
+
+        $pedidoData = $request->only(['direccionEnvio', 'idCliente']);
         $pedidoData['Usuario'] = null;
         $pedidoData['estadoPedido'] = 'En preparación';
         $pedidoData['fechaPedido'] = date('Y-m-d');
