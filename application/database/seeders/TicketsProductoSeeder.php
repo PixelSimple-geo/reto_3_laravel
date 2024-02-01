@@ -224,7 +224,7 @@ class TicketsProductoSeeder extends Seeder
             'idPedido' => 9,
             'idFormatoProducto' => 18,
             'unidades' => 10,
-            'created_at' => '2024-04-25 05:40:00',
+            'created_at' => '2024-03-25 05:40:00',
             'updated_at' => now(),
         ]);
 
@@ -232,7 +232,7 @@ class TicketsProductoSeeder extends Seeder
             'idPedido' => 3,
             'idFormatoProducto' => 18,
             'unidades' => 12,
-            'created_at' => '2024-04-30 07:55:00',
+            'created_at' => '2024-03-30 07:55:00',
             'updated_at' => now(),
         ]);
 

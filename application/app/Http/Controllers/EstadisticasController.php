@@ -16,48 +16,49 @@ class EstadisticasController extends Controller
 {
     public function index()
     {
-        $formatos = FormatoProducto::with('producto')->get();
+        // Calcular las ganancias mensuales
+        $gananciasMensuales = TicketProducto::selectRaw('DATE_FORMAT(ticket_producto.created_at, "%Y-%m") as month, SUM(ticket_producto.unidades * formato_productos.precioUnitario) as total')
+            ->join('formato_productos', 'ticket_producto.idFormatoProducto', '=', 'formato_productos.id')
+            ->groupBy('month')
+            ->orderBy('month')
+            ->get();
 
+        // Preparar datos para el gráfico
+        $labels = $gananciasMensuales->pluck('month')->map(function ($month) {
+            return \Carbon\Carbon::parse($month)->format('F Y');
+
+        });
+
+        $datosGanancias = $gananciasMensuales->pluck('total');
+
+        // Crear el gráfico de ganancias mensuales
+        $chart2 = LarapexChart::lineChart()
+            ->setTitle('Ganancias Mensuales')
+            ->setXAxis($labels->toArray())
+            ->addData('Ganancias', $datosGanancias->toArray())
+            ->setColors(['#334FFF']);
+
+
+        // Otros cálculos y consultas para el primer gráfico
+        $formatos = FormatoProducto::with('producto')->get();
         $cantidadTotalPorFormato = [];
-        $labels = [];
+        $labels1 = [];
 
         foreach ($formatos as $formato) {
             $idFormato = $formato->id;  
             $cantidadTotalPorFormato[] = TicketProducto::where('idFormatoProducto', $idFormato)->sum('unidades');
 
             $productoFormato = $formato->producto->nombreProducto . ' ' . $formato->formatoEnvase;
-            $labels[] = $productoFormato;
+            $labels1[] = $productoFormato;
         }
 
-        $chart = LarapexChart::barChart()
+        $chart1 = LarapexChart::barChart()
             ->setTitle('Productos Comprados')
-            ->setXAxis($labels)
+            ->setXAxis($labels1)
             ->addData('Unidades', $cantidadTotalPorFormato)
             ->setColors(['#334FFF']);
 
-        $tickets = TicketProducto::all();
-        $ticketsPorMes = $tickets->groupBy(function($date) {
-            return \Carbon\Carbon::parse($date->created_at)->format('m');
-        });
-
-        $totalPorMes = [];
-        $labels2 = [];
-
-        foreach ($ticketsPorMes as $key => $value) {
-            $total = 0;
-            foreach ($value as $ticket) {
-                $total += $ticket->unidades * $ticket->formatoProducto->precioUnitario;
-            }
-            $totalPorMes[] = number_format($total, 2);
-            $labels2[] = \Carbon\Carbon::createFromFormat('!m', $key)->format('F');
-        }
-
-        $chart2 = LarapexChart::lineChart()
-            ->setTitle('Ganancias Mensuales')
-            ->setXAxis($labels2)
-            ->addData('Ganancias', $totalPorMes)
-            ->setColors(['#334FFF']);
-
-        return view('estadisticas.estadisticas', compact('chart', 'chart2'));
+        return view('estadisticas.estadisticas', compact('chart1', 'chart2'));
     }
 }
+    

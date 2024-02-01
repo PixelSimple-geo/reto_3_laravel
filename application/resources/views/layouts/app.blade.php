@@ -16,6 +16,8 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <!-- Template -->
         <style>
             #template {
                 display: grid;
@@ -23,6 +25,7 @@
                 min-height: 100vh;
             }
         </style>
+
     </head>
     <body class="font-sans antialiased ">
         <div class="bg-gray-100 dark:bg-gray-900" id=template>

@@ -42,18 +42,22 @@ class ProductoController extends Controller
             'idCategoria' => 'required',
             'nombreProducto' => 'required|string',
             'descripcionProducto' => 'required|string',
-            'imagen' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $imagenPath = $request->file('imagen')->store('public/imagenes');
-        $imagenPath = str_replace('public/', '', $imagenPath); 
+        $imagenPath = null;
+
+        if ($request->hasFile('imagen')) {
+            $imagenPath = $request->file('imagen')->store('public/imagenes');
+            $imagenPath = str_replace('public/', '', $imagenPath); 
+        }
+
         $producto = Producto::create([
             'idCategoria' => $validatedData['idCategoria'],
             'nombreProducto' => $validatedData['nombreProducto'],
             'descripcionProducto' => $validatedData['descripcionProducto'],
             'fotoURL' => $imagenPath, 
         ]);
-
 
         return redirect()->route('productos.productoIndex')->with('success', 'Producto creado exitosamente.');
     }

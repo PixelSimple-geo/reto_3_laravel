@@ -39,7 +39,7 @@
                         <!-- Imagen -->
                         <div class="mb-4">
                             <label for="imagen" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Imagen:</label>
-                            <input type="file" name="imagen" id="imagen" class="form-input mt-1 block w-full" accept="image/*" required>
+                            <input type="file" name="imagen" id="imagen" class="form-input mt-1 block w-full" accept="image/*">
                         </div>                       
 
                         <!-- Botones de acción -->
