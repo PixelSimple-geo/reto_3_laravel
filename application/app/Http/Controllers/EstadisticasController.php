@@ -16,14 +16,12 @@ class EstadisticasController extends Controller
 {
     public function index()
     {
-        // Calcular las ganancias mensuales
         $gananciasMensuales = TicketProducto::selectRaw('DATE_FORMAT(ticket_producto.created_at, "%Y-%m") as month, SUM(ticket_producto.unidades * formato_productos.precioUnitario) as total')
             ->join('formato_productos', 'ticket_producto.idFormatoProducto', '=', 'formato_productos.id')
             ->groupBy('month')
             ->orderBy('month')
             ->get();
 
-        // Preparar datos para el gráfico
         $labels = $gananciasMensuales->pluck('month')->map(function ($month) {
             return \Carbon\Carbon::parse($month)->format('F Y');
 
@@ -31,7 +29,6 @@ class EstadisticasController extends Controller
 
         $datosGanancias = $gananciasMensuales->pluck('total');
 
-        // Crear el gráfico de ganancias mensuales
         $chart2 = LarapexChart::lineChart()
             ->setTitle('Ganancias Mensuales')
             ->setXAxis($labels->toArray())
@@ -39,7 +36,6 @@ class EstadisticasController extends Controller
             ->setColors(['#334FFF']);
 
 
-        // Otros cálculos y consultas para el primer gráfico
         $formatos = FormatoProducto::with('producto')->get();
         $cantidadTotalPorFormato = [];
         $labels1 = [];

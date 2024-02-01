@@ -27,7 +27,7 @@
                             <select name="idFormatoProducto" id="idFormatoProducto" class="form-select mt-1 block w-full" required>
                                 <option value="" disabled selected>Selecciona un Formato de Producto</option>
                                 @foreach($formatosProducto as $formatoProducto)
-                                <option value="{{ $formatoProducto->id }}">{{ $formatoProducto->id }} - {{ $formatoProducto->producto->nombreProducto }} - {{ $formatoProducto->formatoEnvase }}</option>
+                                    <option value="{{ $formatoProducto->id }}">{{ $formatoProducto->id }} - {{ $formatoProducto->producto->nombreProducto }} - {{ $formatoProducto->formatoEnvase }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -37,14 +37,9 @@
                             <input type="number" name="unidades" id="unidades" class="form-input mt-1 block w-full" min="1" required>
                         </div>
 
-                        <div class="form-group d-flex justify-content-between">
-                            <div class="form-group mb-4">
-                                <button type="submit" class="btn btn-primary text-black">{{ __('Crear Ticket') }}</button>
-                            </div>
-
-                            <div class="form-group">
-                                <a href="{{ route('tickets.ticketIndex') }}" class="btn btn-secondary">{{ __('Volver') }}</a>
-                            </div>
+                        <div class="mb-3 d-flex flex-column flex-md-row justify-content-md-between">
+                            <button type="submit" class="btn btn-primary text-black">{{ __('Crear Ticket') }}</button>
+                            <a href="{{ route('tickets.ticketIndex') }}" class="btn btn-secondary">{{ __('Volver') }}</a>
                         </div>
                     </form>
                 </div>
