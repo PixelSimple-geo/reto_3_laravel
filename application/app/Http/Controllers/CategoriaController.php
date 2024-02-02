@@ -8,10 +8,21 @@ use Illuminate\Support\Facades\Redirect;
 
 class CategoriaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $categorias = Categoria::all();
-        return response()->json($categorias, 200);
+        $search = $request->input('search');
+        $categorias = Categoria::query()
+            ->when($search, function ($query, $search) {
+                return $query->where('nombreCategoria', 'like', '%' . $search . '%');
+            })
+            ->get();
+
+        return view('categorias.categoriaIndex', compact('categorias'));
+    }
+
+    public function create()
+    {
+        return view('categorias.categoriaCreate');
     }
 
     public function store(Request $request)
@@ -21,7 +32,12 @@ class CategoriaController extends Controller
         ]);
 
         $categoria = Categoria::create($request->all());
-        return response()->json($categoria, 201);
+        return Redirect::route('c.categoriaIndex')->with('success', 'Categoria creada exitosamente.');
+    }
+
+    public function edit(Categoria $categoria)
+    {
+        return view('categorias.categoriaEdit', compact('categoria'));
     }
 
     public function show(Categoria $categoria)
@@ -36,12 +52,12 @@ class CategoriaController extends Controller
         ]);
 
         $categoria->update($request->all());
-        return response()->json($categoria, 200);
+        return Redirect::route('categorias.categoriaIndex')->with('success', 'Categoria modificada exitosamente.');
     }
 
     public function destroy(Categoria $categoria)
     {
         $categoria->delete();
-        return response()->json(null, 204);
+        return Redirect::route('categorias.categoriaIndex')->with('success', 'Categoria eliminada exitosamente.');
     }
 }

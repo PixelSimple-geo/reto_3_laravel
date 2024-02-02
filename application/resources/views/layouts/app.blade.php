@@ -26,6 +26,9 @@
             background-color: #f8f9fa;
             margin-bottom: 1rem;
         }
+        .no-underline {
+        text-decoration: none;
+    }
     </style>
 
     <!-- Scripts -->

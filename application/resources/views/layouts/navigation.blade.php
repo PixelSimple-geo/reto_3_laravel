@@ -1,42 +1,49 @@
 <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4  md:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                    <img src="{{ asset('home.svg') }}" alt="Descripción de la imagen">
+                        <img src="{{ asset('home.svg') }}" alt="Descripción de la imagen">
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 md:-my-px md:ms-10 md:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="no-underline">
                         {{ __('Pedidos') }}
                     </x-nav-link>
 
                     @if (Auth::user()->rol === 'administrativo' || Auth::user()->rol === 'responsable')
-                        <x-nav-link :href="route('clientes.clienteIndex')" :active="request()->routeIs('clientes.clienteIndex')">
+                        <x-nav-link :href="route('clientes.clienteIndex')" :active="request()->routeIs('clientes.clienteIndex')" class="no-underline">
                             {{ __('Clientes') }}
                         </x-nav-link>
 
-                        <x-nav-link :href="route('productos.productoIndex')" :active="request()->routeIs('productos.productoIndex')">
+                        <x-nav-link :href="route('productos.productoIndex')" :active="request()->routeIs('productos.productoIndex')" class="no-underline">
                             {{ __('Catálogo de Productos') }}
                         </x-nav-link>
 
-                        <x-nav-link :href="route('formatos.formatoProductoIndex')" :active="request()->routeIs('formatos.formatoProductoIndex')">
+                        <x-nav-link :href="route('formatos.formatoProductoIndex')" :active="request()->routeIs('formatos.formatoProductoIndex')" class="no-underline">
                             {{ __('Formatos de producto') }}
                         </x-nav-link>
 
-                        <x-nav-link :href="route('tickets.ticketIndex')" :active="request()->routeIs('tickets.ticketIndex')">
+                        <x-nav-link :href="route('tickets.ticketIndex')" :active="request()->routeIs('tickets.ticketIndex')" class="no-underline">
                             {{ __('Tickets') }}
                         </x-nav-link>
                         
+                        <x-nav-link :href="route('categorias.categoriaIndex')" :active="request()->routeIs('categorias.categoriaIndex')" class="no-underline">
+                            {{ __('Categorías') }}
+                        </x-nav-link>
+
+                        <x-nav-link :href="route('usuarios.usuarioIndex')" :active="request()->routeIs('usuarios.usuarioIndex')" class="no-underline">
+                            {{ __('Usuarios') }}
+                        </x-nav-link>
                     @endif
 
                     @if (Auth::user()->rol === 'responsable')
-                        <x-nav-link :href="route('estadisticas')" :active="request()->routeIs('estadisticas')">
+                        <x-nav-link :href="route('estadisticas')" :active="request()->routeIs('estadisticas')" class="no-underline">
                             {{ __('Estadísticas') }}
                         </x-nav-link>
                     @endif
@@ -60,7 +67,7 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
+                        <x-dropdown-link :href="route('profile.edit')" class="no-underline">
                             {{ __('Perfil') }}
                         </x-dropdown-link>
 
@@ -70,8 +77,8 @@
 
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Cerrar Sesion') }}
+                                                this.closest('form').submit();" class="no-underline">
+                                {{ __('Cerrar Sesión') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -93,30 +100,37 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden md:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="no-underline">
                 {{ __('Pedidos') }}
             </x-responsive-nav-link>
             @if (Auth::user()->rol === 'administrativo' || Auth::user()->rol === 'responsable')
-                <x-responsive-nav-link :href="route('clientes.clienteIndex')" :active="request()->routeIs('clientes.index')">
+                <x-responsive-nav-link :href="route('clientes.clienteIndex')" :active="request()->routeIs('clientes.index')" class="no-underline">
                     {{ __('Clientes') }}
                 </x-responsive-nav-link>
 
-                <x-responsive-nav-link :href="route('productos.productoIndex')" :active="request()->routeIs('productos.catalogo')">
+                <x-responsive-nav-link :href="route('productos.productoIndex')" :active="request()->routeIs('productos.catalogo')" class="no-underline">
                     {{ __('Catálogo de Productos') }}
                 </x-responsive-nav-link>
 
-                <x-responsive-nav-link :href="route('formatos.formatoProductoIndex')" :active="request()->routeIs('formatos.index')">
+                <x-responsive-nav-link :href="route('formatos.formatoProductoIndex')" :active="request()->routeIs('formatos.index')" class="no-underline">
                     {{ __('Formatos de producto') }}
                 </x-responsive-nav-link>
 
-                <x-responsive-nav-link :href="route('tickets.ticketIndex')" :active="request()->routeIs('tickets.ticketIndex')">
+                <x-responsive-nav-link :href="route('tickets.ticketIndex')" :active="request()->routeIs('tickets.ticketIndex')" class="no-underline">
                     {{ __('Tickets') }}
                 </x-responsive-nav-link>
 
+                <x-responsive-nav-link :href="route('categorias.categoriaIndex')" :active="request()->routeIs('categorias.categoriaIndex')" class="no-underline">
+                    {{ __('Categorías') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('usuarios.usuarioIndex')" :active="request()->routeIs('usuarios.usuarioIndex')" class="no-underline">
+                    {{ __('Usuarios') }}
+                </x-responsive-nav-link>
             @endif
 
             @if (Auth::user()->rol === 'responsable')
-                <x-responsive-nav-link :href="route('estadisticas')" :active="request()->routeIs('estadisticas')">
+                <x-responsive-nav-link :href="route('estadisticas')" :active="request()->routeIs('estadisticas')" class="no-underline">
                     {{ __('Estadísticas') }}
                 </x-responsive-nav-link>
             @endif
@@ -130,7 +144,7 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
+                <x-responsive-nav-link :href="route('profile.edit')" class="no-underline">
                     {{ __('Perfil') }}
                 </x-responsive-nav-link>
 
@@ -140,8 +154,8 @@
 
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Cerrar Sesion') }}
+                                        this.closest('form').submit();" class="no-underline">
+                        {{ __('Cerrar Sesión') }}
                     </x-responsive-nav-link>
                 </form>
             </div>
