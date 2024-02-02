@@ -52,8 +52,8 @@
                                         </select>
                                     </div>
                                     <div class="mb-3 d-flex flex-column flex-md-row">
-                                        <button type="submit" class="btn btn-primary text-black">Filtrar</button>
-                                        <button type="reset" class="btn btn-secondary text-black">Resetear</button>
+                                        <button type="submit" class="btn btn-primary">Filtrar</button>
+                                        <button type="reset" class="btn btn-secondary">Resetear</button>
                                     </div>
                                 </form>
                             </div>
@@ -99,7 +99,7 @@
                                                             <form action="{{ route('pedidos.destroy', $pedido->id) }}" method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
-                                                                <button type="submit" class="btn btn-danger text-black" onclick="return confirm('¿Estás seguro de que deseas eliminar este pedido?')">Eliminar</button>
+                                                                <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este pedido?')">Eliminar</button>
                                                             </form>
                                                         </td>
                                                     </tr>

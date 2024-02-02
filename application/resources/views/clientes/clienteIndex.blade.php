@@ -24,7 +24,7 @@
                                     <form action="{{ route('clientes.clienteIndex') }}" method="GET">
                                         <div class="input-group">
                                             <input type="text" name="search" placeholder="Buscar cliente..." class="form-control" autocomplete="off">
-                                            <button type="submit" class="btn btn-primary text-black">Buscar</button>
+                                            <button type="submit" class="btn btn-primary">Buscar</button>
                                         </div>
                                     </form>
                                 </div>
@@ -75,7 +75,7 @@
                                                                 <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST">
                                                                     @csrf
                                                                     @method('DELETE')
-                                                                    <button type="submit" class="btn btn-danger text-black" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">Eliminar</button>
+                                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">Eliminar</button>
                                                                 </form>
                                                             </td>
                                                         </tr>

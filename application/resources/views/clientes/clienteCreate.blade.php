@@ -34,7 +34,7 @@
                                 </div>
 
                                 <div class="mb-3 d-flex flex-column flex-md-row justify-content-md-between">
-                                        <button type="submit" class="btn btn-primary text-black">{{ __('Crear Cliente') }}</button>
+                                        <button type="submit" class="btn btn-primary">{{ __('Crear Cliente') }}</button>
                                         <a href="{{ route('clientes.clienteIndex') }}" class="btn btn-secondary">{{ __('Volver a los Clientes') }}</a>
                                 </div>
                             </form>

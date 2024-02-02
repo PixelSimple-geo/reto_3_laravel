@@ -34,7 +34,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary text-black">Buscar</button>
+                                <button type="submit" class="btn btn-primary">Buscar</button>
                             </form>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                                                     <form action="{{ route('tickets.ticketDestroy', [$ticket->idPedido, $ticket->idFormatoProducto]) }}" method="POST" style="display: inline-block;">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger text-black" onclick="return confirm('¿Estás seguro de que deseas eliminar este ticket?')">Eliminar</button>
+                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este ticket?')">Eliminar</button>
                                                     </form>
                                                 </td>
                                             </tr>

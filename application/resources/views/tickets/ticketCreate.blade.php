@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="mb-3 d-flex flex-column flex-md-row justify-content-md-between">
-                            <button type="submit" class="btn btn-primary text-black">{{ __('Crear Ticket') }}</button>
+                            <button type="submit" class="btn btn-primary">{{ __('Crear Ticket') }}</button>
                             <a href="{{ route('tickets.ticketIndex') }}" class="btn btn-secondary">{{ __('Volver') }}</a>
                         </div>
                     </form>

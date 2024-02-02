@@ -47,7 +47,7 @@
                         <input type="hidden" name="imagen_actual" value="{{ $producto->fotoURL }}"> 
 
                         <div class="mb-3 d-flex flex-column flex-md-row justify-content-md-between">
-                            <button type="submit" class="btn btn-primary text-black">{{ __('Guardar Cambios') }}</button>
+                            <button type="submit" class="btn btn-primary">{{ __('Guardar Cambios') }}</button>
                             <a href="{{ route('productos.productoIndex') }}" class="btn btn-secondary">{{ __('Volver a los Productos') }}</a>
                         </div>
                     </form>

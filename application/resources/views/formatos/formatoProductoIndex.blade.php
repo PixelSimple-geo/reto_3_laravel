@@ -49,7 +49,7 @@
                                                 <input type="number" name="precio_max" id="precio_max" placeholder="Precio máximo" class="form-control mt-1" min="0">
                                             </div>
                                             <div class="col-md-2 mb-3 d-flex align-items-end">
-                                                <button type="submit" class="btn btn-primary mt-3 text-black">Buscar</button>
+                                                <button type="submit" class="btn btn-primary mt-3">Buscar</button>
                                             </div>
                                         </div>
                                     </form>
@@ -96,7 +96,7 @@
                                                                 <form action="{{ route('formatoProductos.destroy', $formato->id) }}" method="POST">
                                                                     @csrf
                                                                     @method('DELETE')
-                                                                    <button type="submit" class="btn btn-danger text-black" onclick="return confirm('¿Estás seguro de que deseas eliminar este formato de producto?')">Eliminar</button>
+                                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este formato de producto?')">Eliminar</button>
                                                                 </form>
                                                             </td>
                                                         </tr>

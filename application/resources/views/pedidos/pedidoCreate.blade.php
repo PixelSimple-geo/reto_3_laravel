@@ -47,7 +47,7 @@
                                 </div>
 
                                 <div class="mb-3 d-flex flex-column flex-md-row justify-content-md-between">
-                                        <button type="submit" class="btn btn-primary text-black">{{ __('Crear Pedido') }}</button>
+                                        <button type="submit" class="btn btn-primary">{{ __('Crear Pedido') }}</button>
                                         <a href="{{ route('dashboard') }}" class="btn btn-secondary">{{ __('Volver al Tablero') }}</a>
                                 </div>
                             </form>

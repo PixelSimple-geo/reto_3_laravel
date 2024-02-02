@@ -29,7 +29,7 @@
                         </div>
 
                         <div class="mb-3 d-flex flex-column flex-md-row justify-content-md-between">
-                            <button type="submit" class="btn btn-primary text-black">{{ __('Guardar Cambios') }}</button>
+                            <button type="submit" class="btn btn-primary">{{ __('Guardar Cambios') }}</button>
                             <a href="{{ route('formatos.formatoProductoIndex') }}" class="btn btn-secondary">{{ __('Volver al Listado') }}</a>
                         </div>
                     </form>

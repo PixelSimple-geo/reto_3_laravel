@@ -22,7 +22,7 @@
                                     <form action="{{ route('productos.productoIndex') }}" method="GET">
                                         <div class="input-group">
                                             <input type="text" name="search" placeholder="Buscar producto..." class="form-control" autocomplete="off">
-                                            <button type="submit" class="btn btn-primary text-black">Buscar</button>
+                                            <button type="submit" class="btn btn-primary">Buscar</button>
                                         </div>
                                     </form>
                                 </div>
@@ -85,7 +85,7 @@
                                                             <form action="{{ route('productos.destroy', $producto->id) }}" method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
-                                                                <button type="submit" class="btn btn-danger text-black" onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?')">Eliminar</button>
+                                                                <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?')">Eliminar</button>
                                                             </form>
                                                         </td>
                                                     </tr>
