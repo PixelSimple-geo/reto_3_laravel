@@ -19,8 +19,11 @@ use App\Http\Controllers\TableroController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\api;
 use App\Http\Controllers\FormatoProductoController;
 use App\Http\Controllers\TicketProductoController;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\UsetsController;
 use App\Http\Controllers\EstadisticasController;
 
 //Inicio
@@ -54,7 +57,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/pedidos/{pedido}', [PedidoController::class, 'update'])->name('pedidos.update');
     Route::delete('/pedidos/{pedido}', [PedidoController::class, 'destroy'])->name('pedidos.destroy');
 
-    //ClientesSeeder
+    //Clientes
     Route::get('/clientes', [ClienteController::class, 'index'])->name('clientes.clienteIndex');
     Route::get('/clientes/{cliente}/edit', [ClienteController::class, 'edit'])->name('clientes.edit');
     Route::delete('/clientes/{cliente}', [ClienteController::class, 'destroy'])->name('clientes.destroy');
@@ -78,11 +81,33 @@ Route::middleware('auth')->group(function () {
     Route::put('/tickets/{idPedido}/{idFormatoProducto}', [TicketProductoController::class, 'update'])->name('tickets.ticketUpdate');
     Route::delete('/tickets/{idPedido}/{idFormatoProducto}', [TicketProductoController::class, 'destroy'])->name('tickets.ticketDestroy');
 
+    // Rutas para Categorías
+    Route::get('/categorias', [CategoriaController::class, 'index'])->name('categorias.categoriaIndex');
+    Route::get('/categorias/create', [CategoriaController::class, 'create'])->name('categorias.create');
+    Route::post('/categorias', [CategoriaController::class, 'store'])->name('categorias.store');
+    Route::get('/categorias/{categoria}/edit', [CategoriaController::class, 'edit'])->name('categorias.categoriaEdit');
+    Route::put('/categorias/{categoria}', [CategoriaController::class, 'update'])->name('categorias.update');
+    Route::delete('/categorias/{categoria}', [CategoriaController::class, 'destroy'])->name('categorias.destroy');
+
+    // Rutas para Usuarios
+    Route::get('/usuarios', [UsersController::class, 'index'])->name('usuarios.usuarioIndex');
+    Route::get('/usuarios/create', [UsersController::class, 'create'])->name('usuarios.create');
+    Route::post('/usuarios', [UsersController::class, 'store'])->name('usuarios.store');
+    Route::get('/usuarios/{usuario}/edit', [UsersController::class, 'edit'])->name('usuarios.edit');
+    Route::put('/usuarios/{usuario}', [UsersController::class, 'update'])->name('usuarios.update');
+    Route::delete('/usuarios/{usuario}', [UsersController::class, 'destroy'])->name('usuarios.destroy');
 
     //Estadisticas
     Route::get('/estadisticas', [EstadisticasController::class, 'index'])->name('estadisticas');
 
 });
 
+// Vue.js API
+Route::get("/api/pedidos", [api\PedidoController::class, 'index']);
+Route::post("/api/pedidos/store", [api\PedidoController::class, 'store']);
+Route::delete("/api/pedidos/{id}", [api\PedidoController::class, "destroy"]);
+
+Route::get("/api/productos", [api\ProductoController::class, 'index']);
+Route::post("/api/sesion", [api\SesionClienteController::class, 'store']);
 
 require __DIR__.'/auth.php';
