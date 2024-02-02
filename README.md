@@ -34,7 +34,7 @@ Killer Beer Company es una empresa distribuidora de cervezas artesanales que bus
 4. Genera una nueva clave de aplicación: `php artisan key:generate`.
 5. Ejecuta las migraciones de la base de datos: `php artisan migrate`.
 6. Inicia el servidor local: `php artisan serve`.
-
+7. Para cargar las estadisticas necesitaras: `composer require arielmejiadev/larapex-charts`.
 ### Aplicación para Clientes (Vue.js + API Laravel)
 
 1. Clona este repositorio en tu máquina local.
