@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ticket_producto', function (Blueprint $table) {
-            $table->foreignId('idPedido')->constrained('pedidos')->onDelete("cascade");
-            $table->foreignId('idFormatoProducto')->constrained('formato_productos');
+            $table->foreignId('idPedido')->constrained('pedidos')->onDelete('cascade');
+            $table->foreignId('idFormatoProducto')->constrained('formato_productos')->onDelete('cascade');
             $table->integer('unidades');
             $table->primary(['idPedido', 'idFormatoProducto']);
             $table->timestamps();

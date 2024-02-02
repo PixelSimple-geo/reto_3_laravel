@@ -13,7 +13,6 @@
                         @csrf
                         @method('PUT')
 
-                        <!-- Campos de edición -->
                         <div class="mb-4">
                             <label for="formatoEnvase" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Formato de Envase:</label>
                             <input type="text" name="formatoEnvase" id="formatoEnvase" class="form-input mt-1 block w-full" value="{{ $formatoProducto->formatoEnvase }}" required>
@@ -29,16 +28,9 @@
                             <input type="number" name="precioUnitario" id="precioUnitario" class="form-input mt-1 block w-full" value="{{ $formatoProducto->precioUnitario }}" required>
                         </div>
 
-                        <div class="form-group d-flex justify-content-between">
-                            <!-- Botón de envío -->
-                            <div class="form-group mb-4">
-                                <button type="submit" class="btn btn-primary text-black">{{ __('Guardar Cambios') }}</button>
-                            </div>
-
-                            <!-- Botón para volver -->
-                            <div class="form-group">
-                                <a href="{{ route('formatos.formatoProductoIndex') }}" class="btn btn-secondary">{{ __('Volver al Listado') }}</a>
-                            </div>
+                        <div class="mb-3 d-flex flex-column flex-md-row justify-content-md-between">
+                            <button type="submit" class="btn btn-primary">{{ __('Guardar Cambios') }}</button>
+                            <a href="{{ route('formatos.formatoProductoIndex') }}" class="btn btn-secondary">{{ __('Volver al Listado') }}</a>
                         </div>
                     </form>
                 </div>

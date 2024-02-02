@@ -31,20 +31,12 @@
 
                         <div class="mb-4">
                             <label for="unidades" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Unidades:</label>
-                            <input type="number" name="unidades" id="unidades" class="form-input mt-1 block w-full" value="{{ $ticket->unidades }}" required>
+                            <input type="number" name="unidades" id="unidades" class="form-input mt-1 block w-full" value="{{ $ticket->unidades }}" min="1" required>
                         </div>
 
-                        <!-- Botones de acción -->
-                        <div class="form-group d-flex justify-content-between">
-                            <!-- Botón de envío -->
-                            <div class="form-group mb-4">
-                                <button type="submit" class="btn btn-primary text-black">{{ __('Guardar Cambios') }}</button>
-                            </div>
-
-                            <!-- Botón para volver -->
-                            <div class="form-group">
-                                <a href="{{ route('tickets.ticketIndex') }}" class="btn btn-secondary">{{ __('Volver al Listado') }}</a>
-                            </div>
+                        <div class="mb-3 d-flex flex-column flex-md-row justify-content-md-between">
+                            <button type="submit" class="btn btn-primary">{{ __('Guardar Cambios') }}</button>
+                            <a href="{{ route('tickets.ticketIndex') }}" class="btn btn-secondary">{{ __('Volver al Listado') }}</a>
                         </div>
                     </form>
                 </div>

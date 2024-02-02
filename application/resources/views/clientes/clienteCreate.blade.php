@@ -6,43 +6,43 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200 dark:border-gray-600">
-                    <form action="{{ route('clientes.store') }}" method="POST">
-                        @csrf
-                        <div class="mb-4">
-                            <label for="codigoCliente" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Código:</label>
-                            <input type="text" name="codigoCliente" id="codigoCliente" class="form-input mt-1 block w-full" value="{{ $codigoCliente }}" readonly>
-                        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="{{ route('clientes.store') }}" method="POST">
+                                @csrf
+                                <div class="mb-4">
+                                    <label for="codigoCliente" class="form-label">Código:</label>
+                                    <input type="text" name="codigoCliente" id="codigoCliente" class="form-control" value="{{ $codigoCliente }}" readonly>
+                                </div>
 
-                        <div class="mb-4">
-                            <label for="nombreCliente" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nombre:</label>
-                            <input type="text" name="nombreCliente" id="nombreCliente" class="form-input mt-1 block w-full" required>
-                        </div>
+                                <div class="mb-4">
+                                    <label for="nombreCliente" class="form-label">Nombre:</label>
+                                    <input type="text" name="nombreCliente" id="nombreCliente" class="form-control" required>
+                                </div>
 
-                        <div class="mb-4">
-                            <label for="apellidoCliente" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Apellido:</label>
-                            <input type="text" name="apellidoCliente" id="apellidoCliente" class="form-input mt-1 block w-full" required>
-                        </div>
+                                <div class="mb-4">
+                                    <label for="apellidoCliente" class="form-label">Apellido:</label>
+                                    <input type="text" name="apellidoCliente" id="apellidoCliente" class="form-control" required>
+                                </div>
 
-                        <div class="mb-4">
-                            <label for="correoCliente" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Correo:</label>
-                            <input type="email" name="correoCliente" id="correoCliente" class="form-input mt-1 block w-full" required>
-                        </div>
+                                <div class="mb-4">
+                                    <label for="correoCliente" class="form-label">Correo:</label>
+                                    <input type="email" name="correoCliente" id="correoCliente" class="form-control" required>
+                                </div>
 
-                        <div class="form-group d-flex justify-content-between">
-                            <div class="form-group mb-4">
-                                <button type="submit" class="btn btn-primary text-black">{{ __('Crear Cliente') }}</button>
-                            </div>
-
-                            <div class="form-group">
-                                <a href="{{ route('clientes.clienteIndex') }}" class="btn btn-secondary">{{ __('Volver a los ClientesSeeder') }}</a>
-                            </div>
+                                <div class="mb-3 d-flex flex-column flex-md-row justify-content-md-between">
+                                        <button type="submit" class="btn btn-primary">{{ __('Crear Cliente') }}</button>
+                                        <a href="{{ route('clientes.clienteIndex') }}" class="btn btn-secondary">{{ __('Volver a los Clientes') }}</a>
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </x-app-layout>
+    

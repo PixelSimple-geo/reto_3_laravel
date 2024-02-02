@@ -13,14 +13,12 @@
                         <div class="card-header">{{ __('Formulario para crear un nuevo pedido') }}</div>
 
                         <div class="card-body">
-                            <!-- Formulario para crear un nuevo pedido -->
                             <form method="POST" action="{{ route('pedidos.store') }}" enctype="multipart/form-data">
                                 @csrf
 
-                                <!-- Cliente -->
-                                <div class="form-group">
-                                    <label for="cliente">{{ __('Cliente:') }}</label>
-                                    <select name="idCliente" id="cliente" class="form-control">
+                                <div class="mb-3 form-group">
+                                    <label for="cliente" class="form-label">{{ __('Cliente:') }}</label>
+                                    <select name="idCliente" id="cliente" class="form-select">
                                         <option value="" disabled selected>-- Escoja cliente --</option>
                                         @foreach($clientes as $cliente)
                                             <option value="{{ $cliente->id }}">{{ $cliente->nombreCliente }}</option>
@@ -28,22 +26,19 @@
                                     </select>
                                 </div>
 
-                                <!-- Fecha -->
-                                <div class="form-group">
-                                    <label for="fecha">{{ __('Fecha:') }}</label>
+                                <div class="mb-3 form-group">
+                                    <label for="fecha" class="form-label">{{ __('Fecha:') }}</label>
                                     <input type="date" name="fecha" id="fecha" class="form-control" required>
                                 </div>
 
-                                <!-- Dirección -->
-                                <div class="form-group">
-                                    <label for="direccion">{{ __('Dirección:') }}</label>
+                                <div class="mb-3 form-group">
+                                    <label for="direccion" class="form-label">{{ __('Dirección:') }}</label>
                                     <input type="text" name="direccion" id="direccion" class="form-control" required>
                                 </div>
 
-                                <!-- Estado -->
-                                <div class="form-group mb-4">
-                                    <label for="estado">{{ __('Estado:') }}</label>
-                                    <select name="estado" id="estado" class="form-control">
+                                <div class="mb-3 form-group">
+                                    <label for="estado" class="form-label">{{ __('Estado:') }}</label>
+                                    <select name="estado" id="estado" class="form-select">
                                         <option value="solicitado">Solicitado</option>
                                         <option value="en preparación">En preparación</option>
                                         <option value="en entrega">En entrega</option>
@@ -51,16 +46,9 @@
                                     </select>
                                 </div>
 
-                                <div class="form-group d-flex justify-content-between">
-                                    <!-- Botón de envío -->
-                                    <div class="form-group mb-4">
-                                        <button type="submit" class="btn btn-primary text-black">{{ __('Crear Pedido') }}</button>
-                                    </div>
-
-                                    <!-- Botón para volver al dashboard -->
-                                    <div class="form-group">
+                                <div class="mb-3 d-flex flex-column flex-md-row justify-content-md-between">
+                                        <button type="submit" class="btn btn-primary">{{ __('Crear Pedido') }}</button>
                                         <a href="{{ route('dashboard') }}" class="btn btn-secondary">{{ __('Volver al Tablero') }}</a>
-                                    </div>
                                 </div>
                             </form>
                         </div>

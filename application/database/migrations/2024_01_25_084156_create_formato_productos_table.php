@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('formato_productos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('idProducto')->constrained('productos');
+            $table->foreignId('idProducto')->constrained('productos')->onDelete('cascade');
             $table->string('formatoEnvase');
             $table->integer('unidades');
             $table->decimal('precioUnitario', 8, 2);

@@ -7,12 +7,13 @@ use App\Models\Pedido;
 use App\Models\Cliente;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Pagination\Paginator;
 
 class PedidoController extends Controller
 {
     public function index()
     {
-        $pedidos = Pedido::all();
+        $pedidos = Pedido::paginate(5);
         return view('pedidos.index', compact('pedidos'));
     }
 

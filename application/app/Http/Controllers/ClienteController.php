@@ -9,10 +9,19 @@ use Illuminate\Support\Facades\Redirect;
 
 class ClienteController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $clientes = Cliente::all();
-        return view("clientes.clienteIndex", compact('clientes'));
+        $search = $request->input('search');
+
+        $clientes = Cliente::query()
+            ->where(function ($query) use ($search) {
+                $query->where('nombreCliente', 'LIKE', "%$search%")
+                    ->orWhere('apellidoCliente', 'LIKE', "%$search%");
+            })
+            ->paginate(5); 
+            $clientes->appends(['search' => $search]);
+
+        return view('clientes.clienteIndex', compact('clientes'));
     }
 
     public function create()
@@ -42,9 +51,7 @@ class ClienteController extends Controller
     public function update(Request $request, Cliente $cliente)
     {
         $cliente->update($request->all());
-        return Redirect::route('clientes.clienteIndex')->with('success', 'Cliente modificado exitosamente.');
-    
-                            
+        return Redirect::route('clientes.clienteIndex')->with('success', 'Cliente modificado exitosamente.');                        
     }
 
     public function destroy(Cliente $cliente)

@@ -5,18 +5,52 @@ namespace App\Http\Controllers;
 use App\Models\FormatoProducto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\Producto;
+
 
 class FormatoProductoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $formatosProductos = FormatoProducto::all();
-        return view('formatos.formatoProductoIndex', compact('formatosProductos'));
+        $formato = $request->input('formato');
+        $unidades = $request->input('unidades');
+        $precioMin = $request->input('precio_min');
+        $precioMax = $request->input('precio_max');
+        $nombreProducto = $request->input('nombre_producto');
+
+        $query = FormatoProducto::query()->with('producto');
+
+        if ($formato) {
+            $query->where('formatoEnvase', $formato);
+        }
+
+        if ($unidades) {
+            $query->where('unidades', 'LIKE', "%$unidades%");
+        }
+
+        if ($precioMin && $precioMax) {
+            $query->whereBetween('precioUnitario', [$precioMin, $precioMax]);
+        }
+
+        if ($nombreProducto) {
+            $query->whereHas('producto', function ($query) use ($nombreProducto) {
+                $query->where('nombreProducto', 'LIKE', "%$nombreProducto%");
+            });
+        }
+
+        $formatosProductos = $query->paginate(5);
+
+        $formatosProductos->appends($request->only(['formato', 'unidades', 'precio_min', 'precio_max', 'nombre_producto']));
+
+        $uniqueFormatos = FormatoProducto::distinct()->pluck('formatoEnvase');
+
+        return view('formatos.formatoProductoIndex', compact('formatosProductos', 'uniqueFormatos'));
     }
 
     public function create()
     {
-        return view('formatos.formatoProductoCreate');
+        $productos = Producto::all();
+        return view('formatos.formatoProductoCreate', compact('productos'));
     }
 
     public function store(Request $request)

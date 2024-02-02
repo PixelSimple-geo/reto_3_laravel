@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Categoria;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class CategoriasSeeder extends Seeder
@@ -14,27 +13,27 @@ class CategoriasSeeder extends Seeder
     public function run(): void
     {
         Categoria::create([
-            'nombreCategoria' => 'Verduras',
+            'nombreCategoria' => 'Cerveza Rubia',
         ]);
 
         Categoria::create([
-            'nombreCategoria' => 'Frutas',
+            'nombreCategoria' => 'Cerveza Negra',
         ]);
 
         Categoria::create([
-            'nombreCategoria' => 'Carne',
+            'nombreCategoria' => 'Cerveza Tostada',
         ]);
 
         Categoria::create([
-            'nombreCategoria' => 'Lácteos',
+            'nombreCategoria' => 'Cerveza IPA',
         ]);
 
         Categoria::create([
-            'nombreCategoria' => 'Panadería',
+            'nombreCategoria' => 'Cerveza de Trigo',
         ]);
 
         Categoria::create([
-            'nombreCategoria' => 'Cerveza',
+            'nombreCategoria' => 'Agua',
         ]);
     }
 }
