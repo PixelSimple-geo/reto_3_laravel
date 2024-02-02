@@ -23,7 +23,7 @@ use App\Http\Controllers\api;
 use App\Http\Controllers\FormatoProductoController;
 use App\Http\Controllers\TicketProductoController;
 use App\Http\Controllers\CategoriaController;
-use App\Http\Controllers\UsetsController;
+use App\Http\Controllers\UsersController;
 use App\Http\Controllers\EstadisticasController;
 
 //Inicio
@@ -91,9 +91,7 @@ Route::middleware('auth')->group(function () {
 
     // Rutas para Usuarios
     Route::get('/usuarios', [UsersController::class, 'index'])->name('usuarios.usuarioIndex');
-    Route::get('/usuarios/create', [UsersController::class, 'create'])->name('usuarios.create');
-    Route::post('/usuarios', [UsersController::class, 'store'])->name('usuarios.store');
-    Route::get('/usuarios/{usuario}/edit', [UsersController::class, 'edit'])->name('usuarios.edit');
+    Route::get('/usuarios/{usuario}/edit', [UsersController::class, 'edit'])->name('usuarios.usuarioEdit');
     Route::put('/usuarios/{usuario}', [UsersController::class, 'update'])->name('usuarios.update');
     Route::delete('/usuarios/{usuario}', [UsersController::class, 'destroy'])->name('usuarios.destroy');
 
@@ -101,13 +99,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/estadisticas', [EstadisticasController::class, 'index'])->name('estadisticas');
 
 });
-
-// Vue.js API
-Route::get("/api/pedidos", [api\PedidoController::class, 'index']);
-Route::post("/api/pedidos/store", [api\PedidoController::class, 'store']);
-Route::delete("/api/pedidos/{id}", [api\PedidoController::class, "destroy"]);
-
-Route::get("/api/productos", [api\ProductoController::class, 'index']);
-Route::post("/api/sesion", [api\SesionClienteController::class, 'store']);
 
 require __DIR__.'/auth.php';

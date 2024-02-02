@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Redirect;
+
+
 class UsersController extends Controller
 {
     /**
@@ -14,8 +17,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('users.index', compact('users'));
+        $usuarios = User::all();
+        return view('usuarios.usuarioIndex', compact('usuarios'));
     }
 
     /**
@@ -25,7 +28,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('usuarios.usuarioCreate');
     }
 
     /**
@@ -43,7 +46,7 @@ class UsersController extends Controller
 
         User::create([
             'usuario' => $request->input('usuario'),
-            'pass' => bcrypt($request->input('pass')), // Hash de la contraseña
+            'pass' => bcrypt($request->input('pass')),
         ]);
 
         return redirect()->route('users.index')->with('success', 'User created successfully');
@@ -99,10 +102,9 @@ class UsersController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(User $usuario)
     {
-        $user->delete();
-
-        return redirect()->route('users.index')->with('success', 'User deleted successfully');
+        $usuario->delete();
+        return Redirect::route('usuarios.usuarioIndex')->with('success', 'Usuario eliminado exitosamente.');
     }
 }
