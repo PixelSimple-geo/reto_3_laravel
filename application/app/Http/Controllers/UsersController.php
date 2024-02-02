@@ -15,11 +15,18 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $usuarios = User::all();
+        $search = $request->input('search');
+        
+        $usuarios = User::query()
+            ->when($search, function ($query, $search) {
+                return $query->where('name', 'like', '%' . $search . '%');
+            })
+            ->paginate(10); 
         return view('usuarios.usuarioIndex', compact('usuarios'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -58,9 +65,9 @@ class UsersController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(User $usuario)
     {
-        return view('users.show', compact('user'));
+        return view('users.show', compact('usuario'));
     }
 
     /**
@@ -69,9 +76,9 @@ class UsersController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(User $usuario)
     {
-        return view('users.edit', compact('user'));
+        return view('usuarios.usuarioEdit', compact('usuario'));
     }
 
     /**
@@ -81,20 +88,17 @@ class UsersController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $usuario)
     {
-        $request->validate([
-            'usuario' => 'required|string',
-            'pass' => 'required|string',
+        $usuario->update([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'rol' => $request->input('rol'),
         ]);
-
-        $user->update([
-            'usuario' => $request->input('usuario'),
-            'pass' => bcrypt($request->input('pass')), // Hash de la nueva contraseña
-        ]);
-
-        return redirect()->route('users.index')->with('success', 'User updated successfully');
+    
+        return redirect()->route('usuarios.usuarioIndex')->with('success', 'Usuario actualizado exitosamente.');
     }
+    
 
     /**
      * Remove the specified resource from storage.

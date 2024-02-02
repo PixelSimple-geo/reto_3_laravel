@@ -19,8 +19,7 @@
 
                             <div class="row mb-4">
                                 <div class="col-md-12">
-                                @include('parciales.success')
-    
+                                    @include('parciales.success')
                                     <form action="{{ route('categorias.categoriaIndex') }}" method="GET">
                                         <div class="input-group">
                                             <input type="text" name="search" placeholder="Buscar categoría..." class="form-control" autocomplete="off">
@@ -35,7 +34,7 @@
                                     <a href="{{ route('categorias.create') }}" class="btn btn-primary">Crear Categoría</a>
                                 </div>
                             </div>
-
+                            {{ $categorias->links() }}
                             <div class="row">
                                 <div class="col-md-12">
                                     @if ($categorias->isEmpty())
@@ -63,7 +62,7 @@
                                                                 <form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST">
                                                                     @csrf
                                                                     @method('DELETE')
-                                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar esta categorias?')">Eliminar</button>
+                                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar esta categorías?')">Eliminar</button>
                                                                 </form>
                                                             </td>
                                                         </tr>

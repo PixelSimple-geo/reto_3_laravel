@@ -11,14 +11,16 @@ class CategoriaController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
+        
         $categorias = Categoria::query()
             ->when($search, function ($query, $search) {
                 return $query->where('nombreCategoria', 'like', '%' . $search . '%');
             })
-            ->get();
+            ->paginate(5);
 
         return view('categorias.categoriaIndex', compact('categorias'));
     }
+
 
     public function create()
     {

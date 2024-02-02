@@ -19,6 +19,8 @@
 
                             <div class="row mb-4">
                                 <div class="col">
+                                @include('parciales.success')
+
                                     <form action="{{ route('productos.productoIndex') }}" method="GET">
                                         <div class="input-group">
                                             <input type="text" name="search" placeholder="Buscar producto..." class="form-control" autocomplete="off">

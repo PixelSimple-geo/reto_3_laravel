@@ -19,15 +19,17 @@
 
                             <div class="row mb-4">
                                 <div class="col-md-12">
+                                    @include('parciales.success')
+
                                     <form action="{{ route('usuarios.usuarioIndex') }}" method="GET">
                                         <div class="input-group">
-                                            <input type="text" name="search" placeholder="Buscar usuario..." class="form-control" autocomplete="off">
+                                            <input type="text" name="search" value="{{ request()->query('search') }}" placeholder="Buscar usuario..." class="form-control" autocomplete="off">
                                             <button type="submit" class="btn btn-primary">Buscar</button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
-
+                            {{ $usuarios->links() }}
                             <div class="row">
                                 <div class="col-md-12">
                                     @if ($usuarios->isEmpty())
