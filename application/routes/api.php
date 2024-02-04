@@ -13,16 +13,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Vue.js API
 Route::middleware(['api_auth'])->group(function () {
     // Pedido
-    Route::get("/pedidos/{idCliente}", [PedidoController::class, 'index']);
+    Route::get("/pedidos", [PedidoController::class, 'index']);
     Route::post("/pedidos/store", [PedidoController::class, 'store']);
     Route::delete("/pedidos/{id}", [PedidoController::class, "destroy"]);
 
-    // Producto
-    Route::get("/productos", [ProductoController::class, 'index']);
+
 });
 
 // Auth
 Route::post("/sesion", [AuthController::class, 'autenticar']);
+
+// Producto
+Route::get("/productos", [ProductoController::class, 'index']);
+
+Route::post("/mail", [\App\Http\Controllers\MailController::class, "index"]);
 
 
 

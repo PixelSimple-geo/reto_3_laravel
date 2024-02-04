@@ -20,7 +20,7 @@ class AuthController extends Controller {
             $token = $this->obtenerTokenDeSesion($cliente->id);
             return response()->json(["auth-token" => $token]);
         } catch (ModelNotFoundException $ignore) {
-            return response()->json(['authenticated' => false], 401);
+            return response()->json(["statusCode" => 401, "message" => "Código no válido"], 401);
         }
     }
 
