@@ -143,7 +143,7 @@ class PedidosSeeder extends Seeder
             'Usuario' => $user2->id,
             'fechaPedido' => now(),
             'direccionEnvio' => '753 Fifth St',
-            'estadoPedido' => 'En preparación',
+            'estadoPedido' => 'En entrega',
         ]);
         
         Pedido::create([
@@ -216,6 +216,30 @@ class PedidosSeeder extends Seeder
             'fechaPedido' => now(),
             'direccionEnvio' => '753 Fourteenth St',
             'estadoPedido' => 'En preparación',
+        ]);
+
+        Pedido::create([
+            'idCliente' => $cliente3->id,
+            'Usuario' => $user2->id,
+            'fechaPedido' => '2024-02-02 07:20:28',
+            'direccionEnvio' => 'Cacueta',
+            'estadoPedido' => 'solicitado',
+        ]);
+
+        Pedido::create([
+            'idCliente' => $cliente3->id,
+            'Usuario' => $user2->id,
+            'fechaPedido' => '2024-02-02 07:20:28',
+            'direccionEnvio' => 'Cacueta',
+            'estadoPedido' => 'entregado',
+        ]);
+
+        Pedido::create([
+            'idCliente' => $cliente3->id,
+            'Usuario' => null,
+            'fechaPedido' => '2024-02-01 07:20:28',
+            'direccionEnvio' => 'Cacueta',
+            'estadoPedido' => 'en entrega',
         ]);
         
     }

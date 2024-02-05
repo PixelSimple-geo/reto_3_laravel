@@ -87,7 +87,7 @@ class ProductosSeeder extends Seeder
             'idCategoria' => $categoria1->id,
             'nombreProducto' => 'Blonde Ale',
             'descripcionProducto' => 'Una cerveza ale rubia con un cuerpo ligero y un sabor suave, perfecta para disfrutar en días soleados.',
-            'fotoURL' => 'imagenes/AuEple7YuKa83yNs8GXFx6xId9GYroXgnBVhSNhF.jpg',
+            'fotoURL' => 'imagenes/XeoILzyYbTXOqqscXi1cadSPK1v4663LtKGRfPs4.jpg',
         ]);
         
         Producto::create([
