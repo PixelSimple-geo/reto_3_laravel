@@ -20,11 +20,11 @@
                         <div class="col-md-5">
                             <form action="{{ route('tickets.ticketIndex') }}" method="GET">
                                 <div class="row">
-                                    <div class="col-md-6 mb-3">
+                                    <div class="col-md-5 mb-3">
                                         <label for="producto" class="form-label">Nombre del Producto:</label>
                                         <input type="text" name="producto" id="producto" class="form-control" placeholder="Buscar producto..." value="{{ request('producto') }}">
                                     </div>
-                                    <div class="col-md-6 mb-3">
+                                    <div class="col-md-5 mb-3">
                                         <label for="formato" class="form-label">Formato:</label>
                                         <select name="formato" id="formato" class="form-select">
                                             <option value="">Todos los formatos</option>
@@ -33,8 +33,10 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                    <div class="col-md-2 mb-3 align-self-end">
+                                    <button type="submit" class="btn btn-primary">Buscar</button>
+                                    </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Buscar</button>
                             </form>
                         </div>
                     </div>
