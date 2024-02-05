@@ -33,11 +33,13 @@ class TableroController extends Controller
             $pedidosQuery->where('estadoPedido', $request->estado);
         }
 
-         if ($user->hasRole('comercial')) {
+        if ($user->hasRole('comercial')) {
             $pedidosQuery->where('Usuario', $user->id);
         } elseif ($user->hasRole('administrativo') || $user->hasRole('responsable')) {
             // No se aplica ningún filtro adicional
         }
+
+        $pedidosQuery->orderBy('fechaPedido', 'desc');
 
         $pedidos = $pedidosQuery->paginate(5);
         $pedidos->appends($request->only(['cliente', 'fecha_inicio', 'fecha_fin', 'estado']));
@@ -46,4 +48,5 @@ class TableroController extends Controller
 
         return view('dashboard', compact('pedidos', 'clientes'));
     }
+
 }
