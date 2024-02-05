@@ -37,12 +37,8 @@
                                 </div>
 
                                 <div class="mb-3 form-group">
-                                    <label for="estado" class="form-label">{{ __('Estado:') }}</label>
-                                    <select name="estado" id="estado" class="form-select">
-                                        <option value="solicitado">Solicitado</option>
-                                        <option value="en preparación">En preparación</option>
-                                        <option value="en entrega">En entrega</option>
-                                        <option value="entregado">Entregado</option>
+                                    <select name="estado" id="estado" class="form-select" style="display: none;">
+                                        <option value="solicitado" selected hidden>Solicitado</option>
                                     </select>
                                 </div>
 
