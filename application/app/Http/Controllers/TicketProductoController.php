@@ -48,7 +48,7 @@ class TicketProductoController extends Controller
     
     public function create()
     {
-        $pedidos = Pedido::all(); 
+        $pedidos = Pedido::where('estadoPedido', 'solicitado')->get();
         $formatosProducto = FormatoProducto::all();
 
         return view('tickets.ticketCreate', compact('pedidos', 'formatosProducto'));

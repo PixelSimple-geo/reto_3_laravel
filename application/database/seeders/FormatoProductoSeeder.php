@@ -29,14 +29,14 @@ class FormatoProductoSeeder extends Seeder
             'idProducto' => $producto1->id,
             'formatoEnvase' => '55cl',
             'unidades' => 36,
-            'precioUnitario' => 15.99,
+            'precioUnitario' => 5.99,
         ]);
 
         FormatoProducto::create([
             'idProducto' => $producto1->id,
             'formatoEnvase' => '20cl',
             'unidades' => 20,
-            'precioUnitario' => 30,
+            'precioUnitario' => 13,
         ]);
 
         FormatoProducto::create([
@@ -50,7 +50,7 @@ class FormatoProductoSeeder extends Seeder
             'idProducto' => $producto3->id,
             'formatoEnvase' => 'barril',
             'unidades' => 29,
-            'precioUnitario' => 22.50,
+            'precioUnitario' => 12.50,
         ]);
 
         FormatoProducto::create([
@@ -71,28 +71,28 @@ class FormatoProductoSeeder extends Seeder
             'idProducto' => $producto6->id,
             'formatoEnvase' => '55cl',
             'unidades' => 24,
-            'precioUnitario' => 29.99,
+            'precioUnitario' => 4.99,
         ]);
 
         FormatoProducto::create([
             'idProducto' => $producto7->id,
             'formatoEnvase' => '55cl',
             'unidades' => 15,
-            'precioUnitario' => 17.50,
+            'precioUnitario' => 2.50,
         ]);
 
         FormatoProducto::create([
             'idProducto' => $producto8->id,
             'formatoEnvase' => '55cl',
             'unidades' => 19,
-            'precioUnitario' => 45.00,
+            'precioUnitario' => 40.00,
         ]);
 
         FormatoProducto::create([
             'idProducto' => $producto9->id,
             'formatoEnvase' => 'Barril',
             'unidades' => 40,
-            'precioUnitario' => 21.99,
+            'precioUnitario' => 100.99,
         ]);
 
         FormatoProducto::create([
@@ -120,7 +120,7 @@ class FormatoProductoSeeder extends Seeder
             'idProducto' => 6,
             'formatoEnvase' => '33cl',
             'unidades' => 34,
-            'precioUnitario' => 29.99,
+            'precioUnitario' => 19.99,
         ]);
 
         FormatoProducto::create([
@@ -134,14 +134,14 @@ class FormatoProductoSeeder extends Seeder
             'idProducto' => 8,
             'formatoEnvase' => '33cl',
             'unidades' => 21,
-            'precioUnitario' => 45.00,
+            'precioUnitario' => 2.00,
         ]);
 
         FormatoProducto::create([
             'idProducto' => 9,
             'formatoEnvase' => '55cl',
             'unidades' => 19,
-            'precioUnitario' => 21.99,
+            'precioUnitario' => 6.99,
         ]);
 
         FormatoProducto::create([
