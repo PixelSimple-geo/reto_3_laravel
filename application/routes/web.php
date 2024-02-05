@@ -49,7 +49,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/productos/{producto}', [ProductoController::class, 'destroy'])->name('productos.destroy');
     Route::put('/productos/{producto}', [ProductoController::class, 'update'])->name('productos.update');
 
-
     //Pedidos
     Route::get('/pedidos/create', [PedidoController::class, 'create'])->name('pedidos.pedidoCreate');
     Route::post('/pedidos', [PedidoController::class, 'store'])->name('pedidos.store');

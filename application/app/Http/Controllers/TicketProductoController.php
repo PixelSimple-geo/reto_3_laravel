@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\TicketProducto;
 use App\Models\Pedido;
@@ -30,6 +31,12 @@ class TicketProductoController extends Controller
         if ($formato) {
             $query->whereHas('formatoProducto', function ($q) use ($formato) {
                 $q->where('formatoEnvase', $formato);
+            });
+        }
+
+        if (Auth::user()->role === 'comercial') {
+            $query->whereHas('pedido', function ($q) {
+                $q->where('user_id', Auth::id());
             });
         }
 

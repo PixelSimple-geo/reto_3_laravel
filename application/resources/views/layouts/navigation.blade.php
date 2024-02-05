@@ -16,6 +16,10 @@
                         {{ __('Pedidos') }}
                     </x-nav-link>
 
+                    <x-nav-link :href="route('tickets.ticketIndex')" :active="request()->routeIs('tickets.ticketIndex')" class="no-underline">
+                        {{ __('Tickets') }}
+                    </x-nav-link>
+
                     @if (Auth::user()->rol === 'administrativo' || Auth::user()->rol === 'responsable')
                         <x-nav-link :href="route('clientes.clienteIndex')" :active="request()->routeIs('clientes.clienteIndex')" class="no-underline">
                             {{ __('Clientes') }}
@@ -27,10 +31,6 @@
 
                         <x-nav-link :href="route('formatos.formatoProductoIndex')" :active="request()->routeIs('formatos.formatoProductoIndex')" class="no-underline">
                             {{ __('Formatos de producto') }}
-                        </x-nav-link>
-
-                        <x-nav-link :href="route('tickets.ticketIndex')" :active="request()->routeIs('tickets.ticketIndex')" class="no-underline">
-                            {{ __('Tickets') }}
                         </x-nav-link>
                         
                         <x-nav-link :href="route('categorias.categoriaIndex')" :active="request()->routeIs('categorias.categoriaIndex')" class="no-underline">
