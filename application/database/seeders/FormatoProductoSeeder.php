@@ -33,6 +33,13 @@ class FormatoProductoSeeder extends Seeder
         ]);
 
         FormatoProducto::create([
+            'idProducto' => $producto1->id,
+            'formatoEnvase' => '20cl',
+            'unidades' => 20,
+            'precioUnitario' => 30,
+        ]);
+
+        FormatoProducto::create([
             'idProducto' => $producto2->id,
             'formatoEnvase' => '33cl',
             'unidades' => 41,

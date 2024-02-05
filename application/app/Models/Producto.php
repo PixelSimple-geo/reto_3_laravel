@@ -18,6 +18,6 @@ class Producto extends Model
 
     public function formatosProducto()
     {
-        return $this->hasMany(FormatoProducto::class, 'id');
+        return $this->hasMany(FormatoProducto::class, 'idProducto');
     }
 }

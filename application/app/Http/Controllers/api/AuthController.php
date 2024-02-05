@@ -4,20 +4,40 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cliente;
+use App\Models\SesionCliente;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
-class AuthController extends Controller
-{
-    public function login(Request $request) {
+class AuthController extends Controller {
+
+    private const TIEMPO_CADUCIDAD_SESION = 30;
+
+    public function autenticar(Request $request) {
+        $codigo = $request->json("codigo");
         try {
-            $jsonData = $request->json()->all();
-            $codigo = $jsonData['codigo'];
-            $cliente = Cliente::where(['codigoCliente' => $codigo])->firstOrFail();
-            return response()->json(['cliente' => $cliente]);
-        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $exception) {
-            return response()->json(['error' => 'Cliente no encontrado'], 404);
-        } catch (\Exception $exception) {
-            return response()->json(['error' => 'error de la base de datos'], 500);
+            $cliente = Cliente::where('codigoCliente', $codigo)->firstOrFail();
+            $token = $this->obtenerTokenDeSesion($cliente->id);
+            return response()->json(["auth-token" => $token]);
+        } catch (ModelNotFoundException $ignore) {
+            return response()->json(["statusCode" => 401, "message" => "Código no válido"], 401);
         }
+    }
+
+    private function obtenerTokenDeSesion(string $idCliente): string {
+        $sesionCliente = SesionCliente::find($idCliente);
+        if (empty($sesionCliente) || $this->comprobarSesionCaducada($sesionCliente))
+            return $this->crearNuevaSesion($idCliente);
+        return $sesionCliente->token;
+    }
+
+    private function comprobarSesionCaducada(SesionCliente $sesionCliente): bool {
+        return now()->diffInMinutes($sesionCliente->updated_at) >= self::TIEMPO_CADUCIDAD_SESION;
+    }
+
+    private function crearNuevaSesion(string $idCliente): string {
+        $uuid = Str::uuid();
+        SesionCliente::updateOrCreate(['idCliente' => $idCliente], ['token' => $uuid]);
+        return $uuid;
     }
 }

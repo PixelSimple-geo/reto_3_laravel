@@ -9,11 +9,10 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
+    public function up(): void {
         Schema::create('sesion_clientes', function (Blueprint $table) {
-            $table->uuid("token")->primary();
-            $table->foreignId("idCliente")->references("id")->on("clientes");
+            $table->uuid("token");
+            $table->foreignId("idCliente")->primary()->references("id")->on("clientes");
             $table->timestamps();
         });
     }
@@ -21,8 +20,7 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
-    {
+    public function down(): void {
         Schema::dropIfExists('sesion_clientes');
     }
 };
