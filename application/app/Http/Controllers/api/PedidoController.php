@@ -14,7 +14,8 @@ class PedidoController extends Controller {
         $pedidos = Pedido::where('idCliente', $idCliente)
             ->with(['ticketProductos', 'ticketProductos.formatoProducto',
                 'ticketProductos.formatoProducto.producto', 'ticketProductos.formatoProducto.producto.categoria'])
-            ->get();
+            ->orderBy('fechaPedido', 'desc')
+            ->paginate(5);
         return response()->json($pedidos);
     }
 

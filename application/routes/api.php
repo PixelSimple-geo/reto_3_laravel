@@ -24,7 +24,10 @@ Route::middleware(['api_auth'])->group(function () {
 Route::post("/sesion", [AuthController::class, 'autenticar']);
 
 // Producto
-Route::get("/productos", [ProductoController::class, 'index']);
+Route::get("/productos/{categoriaId?}", [ProductoController::class, 'index']);
+
+// Categorias
+Route::get("/categorias", [\App\Http\Controllers\api\CategoriaController::class, 'index']);
 
 Route::post("/mail", [\App\Http\Controllers\MailController::class, "index"]);
 
