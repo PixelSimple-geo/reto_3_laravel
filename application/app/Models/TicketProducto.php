@@ -11,7 +11,7 @@ class TicketProducto extends Model
 
     protected $table = 'ticket_producto';
     protected $fillable = ['idPedido', 'idFormatoProducto', 'unidades'];
-    public $timestamps = false;
+    public $timestamps = true;
 
     public function pedido()
     {
